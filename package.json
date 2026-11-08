@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "description": "Cairn, a calm project management workspace that runs entirely in the browser, built with React, TypeScript, shadcn on Base UI, and Tailwind CSS.",
+  "description": "A calm project manager that runs entirely in your browser. Boards, lists, timelines, workload and a ⌘K command menu. No server, no sign-up.",
   "keywords": [
     "project-management",
     "react",
