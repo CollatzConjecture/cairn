@@ -1,0 +1,413 @@
+/* The only stylesheet: Tailwind, shadcn's theme variables carrying the Cairn palette, and the few global rules utilities cannot express. */
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Hover only where a real pointer hovers: touch devices fire :hover on tap and leave it stuck. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
+/* Motion follows the app preference (Settings > Appearance), which can override the OS: data-motion is 'reduce', 'full' or 'system'. */
+@custom-variant motion-reduce {
+  &:where([data-motion='reduce'] *) {
+    @slot;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &:where([data-motion='system'] *) {
+      @slot;
+    }
+  }
+}
+@custom-variant motion-safe {
+  &:where([data-motion='full'] *) {
+    @slot;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    &:where([data-motion='system'] *) {
+      @slot;
+    }
+  }
+}
+
+@theme {
+  /* The palette is exactly Cairn's: Tailwind's default color scale is removed so only tokens resolve. */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Cairn's type scale: 13.5px body, 12.5px controls. */
+  --text-2xs: 11px;
+  --text-2xs--line-height: 1.45;
+  --text-xs: 12px;
+  --text-xs--line-height: 1.45;
+  --text-sm: 12.5px;
+  --text-sm--line-height: 1.45;
+  --text-base: 13.5px;
+  --text-base--line-height: 1.45;
+  --text-md: 14.5px;
+  --text-md--line-height: 1.45;
+  --text-lg: 16px;
+  --text-lg--line-height: 1.4;
+  --text-xl: 19px;
+  --text-xl--line-height: 1.45;
+  --text-2xl: 23px;
+  --text-2xl--line-height: 1.2;
+
+  /* The sidebar goes off-canvas below 900px. */
+  --breakpoint-md: 900px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: var(--ease-out);
+  /* tw-animate-css enters and exits with plain `ease`; Cairn uses the strong ease-out everywhere. */
+  --animate-in: enter var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, var(--ease-out)) var(--tw-animation-delay, 0s)
+    var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+  --animate-out: exit var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, var(--ease-out)) var(--tw-animation-delay, 0s)
+    var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Cairn additions. */
+  --color-canvas: var(--canvas);
+  --color-sunken: var(--sunken);
+  --color-muted-strong: var(--muted-strong);
+  --color-divider: var(--divider);
+  --color-overlay: var(--overlay);
+  --color-fg-2: var(--fg-2);
+  --color-fg-4: var(--fg-4);
+  --color-primary-soft: color-mix(in srgb, var(--primary) 10%, transparent);
+  --color-primary-line: color-mix(in srgb, var(--primary) 38%, transparent);
+  --color-green: var(--green);
+  --color-amber: var(--amber);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-violet: var(--violet);
+  --color-teal: var(--teal);
+  --color-rose: var(--rose);
+  --color-orange: var(--orange);
+  --color-gray: var(--gray);
+  --color-status-backlog: var(--st-backlog);
+  --color-status-todo: var(--st-todo);
+  --color-status-progress: var(--st-progress);
+  --color-status-review: var(--st-review);
+  --color-status-done: var(--st-done);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
+  --radius-2xl: calc(var(--radius) + 6px);
+
+  --shadow-xs: var(--elev-sm);
+  --shadow-sm: var(--elev-sm);
+  --shadow-md: var(--elev-pop);
+  --shadow-lg: var(--elev-pop);
+  --shadow-card: var(--elev-card);
+  --shadow-drag: var(--elev-drag);
+  --shadow-sidebar-active: var(--elev-sidebar-active);
+}
+
+:root {
+  --radius: 8px;
+
+  --canvas: #fbfaf8;
+  --background: #ffffff;
+  --foreground: #1d1c1a;
+  --card: #ffffff;
+  --card-foreground: #1d1c1a;
+  --popover: #ffffff;
+  --popover-foreground: #1d1c1a;
+  --acc-l: #4b5bd6;
+  --acc-d: #8e9af3;
+  --primary: var(--acc-l);
+  --primary-foreground: #ffffff;
+  --secondary: #f6f5f2;
+  --secondary-foreground: #1d1c1a;
+  --muted: #f6f5f2;
+  --muted-strong: #eeede9;
+  --muted-foreground: #6b6760;
+  --accent: #f6f5f2;
+  --accent-foreground: #1d1c1a;
+  --sunken: #f7f6f3;
+  --fg-2: #57544e;
+  --fg-4: #8c8880;
+  --border: #e9e7e2;
+  --input: #dad7d0;
+  --divider: #f0eeea;
+  --ring: var(--primary);
+  --overlay: rgba(24, 22, 19, 0.28);
+
+  --sidebar: #f4f3f0;
+  --sidebar-foreground: var(--fg-2);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--muted-strong);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-active: var(--background);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --green: #25754b;
+  --amber: #8f5e0e;
+  --red: #b23c30;
+  --blue: #3570c4;
+  --violet: #7652c2;
+  --teal: #1e8580;
+  --rose: #bc4270;
+  --orange: #c0612b;
+  --gray: #8a867e;
+  --destructive: var(--red);
+  --st-backlog: #a29e96;
+  --st-todo: #7c7870;
+  --st-progress: #c88a14;
+  --st-review: #7652c2;
+  --st-done: #2e8456;
+  /* How much of a data colour (--c) survives in icons and text: dark mode pulls it toward the text colour. */
+  --tint-mix: 100%;
+
+  --elev-sm: 0 1px 2px rgba(28, 25, 20, 0.05);
+  --elev-card: 0 1px 2px rgba(28, 25, 20, 0.04), 0 0 0 1px var(--border);
+  --elev-pop: 0 12px 32px -8px rgba(28, 25, 20, 0.16), 0 2px 6px -2px rgba(28, 25, 20, 0.06);
+  --elev-drag: 0 16px 36px -10px rgba(28, 25, 20, 0.28), 0 0 0 1px var(--input);
+  --elev-sidebar-active: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px var(--border);
+
+  --side-row: 30px;
+  --row-h: 40px;
+  --card-pad: 10px;
+  --gutter: 24px;
+  --topbar-h: 46px;
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: #0d0d0c;
+  --background: #121211;
+  --foreground: #eceae5;
+  --card: #121211;
+  --card-foreground: #eceae5;
+  --popover: #171716;
+  --popover-foreground: #eceae5;
+  --primary: var(--acc-d);
+  --primary-foreground: #12131c;
+  --secondary: #20201f;
+  --secondary-foreground: #eceae5;
+  --muted: #20201f;
+  --muted-strong: #292927;
+  --muted-foreground: #9a968f;
+  --accent: #20201f;
+  --accent-foreground: #eceae5;
+  --sunken: #0d0d0c;
+  --fg-2: #b5b2ab;
+  --fg-4: #6f6c66;
+  --border: #252523;
+  --input: #353431;
+  --divider: #1c1c1b;
+  --overlay: rgba(0, 0, 0, 0.55);
+
+  --sidebar: #121211;
+  --sidebar-active: var(--muted-strong);
+
+  --green: #5cba86;
+  --amber: #d8a443;
+  --red: #e57d70;
+  --blue: #72a5ea;
+  --violet: #a98deb;
+  --teal: #58c0b6;
+  --rose: #e68aab;
+  --orange: #e3925f;
+  --gray: #8f8b84;
+  --st-backlog: #6f6c66;
+  --st-todo: #a6a39c;
+  --st-progress: #d8a443;
+  --st-review: #a98deb;
+  --st-done: #5cba86;
+  --tint-mix: 72%;
+
+  --elev-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --elev-card: 0 0 0 1px var(--border);
+  --elev-pop: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
+  --elev-drag: 0 18px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--input);
+  --elev-sidebar-active: none;
+  color-scheme: dark;
+}
+
+/* Settings > Appearance: accent, sidebar style and density swap variables on <html>. Indigo repeats the default so an
+   Indigo swatch inside another accent still reads indigo. */
+[data-accent='indigo'] {
+  --acc-l: #4b5bd6;
+  --acc-d: #8e9af3;
+}
+[data-accent='blue'] {
+  --acc-l: #2f6cd4;
+  --acc-d: #74a7f0;
+}
+[data-accent='violet'] {
+  --acc-l: #7348cc;
+  --acc-d: #ae93f0;
+}
+[data-accent='teal'] {
+  --acc-l: #1a7f7a;
+  --acc-d: #5cc4ba;
+}
+[data-accent='rose'] {
+  --acc-l: #b93d68;
+  --acc-d: #ec8dae;
+}
+[data-accent='graphite'] {
+  --acc-l: #34332f;
+  --acc-d: #d9d6cf;
+}
+[data-side='compact'] {
+  --side-row: 26px;
+}
+[data-density='compact'] {
+  --row-h: 34px;
+  --card-pad: 8px;
+}
+@media (max-width: 899px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+@media (max-width: 639px) {
+  :root {
+    --topbar-h: 50px;
+  }
+}
+
+/* Data-driven colours (project, member, label) arrive as the inline custom property --c. */
+@utility text-tint {
+  color: color-mix(in srgb, var(--c) var(--tint-mix), var(--foreground));
+}
+@utility avatar-tint {
+  background-color: color-mix(in srgb, var(--c) 17%, var(--background));
+  color: color-mix(in srgb, var(--c) 55%, var(--foreground));
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring;
+  }
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-base text-foreground antialiased;
+    overflow: hidden;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 1px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 22%, transparent);
+  }
+  input,
+  textarea,
+  [contenteditable] {
+    caret-color: var(--primary);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--input);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--fg-4);
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Reduced motion keeps fades and drops movement: tw-animate-css reads these variables, and transitions end instantly. */
+  [data-motion='reduce'] *,
+  [data-motion='reduce'] *::before,
+  [data-motion='reduce'] *::after {
+    --tw-enter-translate-x: 0 !important;
+    --tw-enter-translate-y: 0 !important;
+    --tw-enter-scale: 1 !important;
+    --tw-enter-rotate: 0 !important;
+    --tw-exit-translate-x: 0 !important;
+    --tw-exit-translate-y: 0 !important;
+    --tw-exit-scale: 1 !important;
+    --tw-exit-rotate: 0 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion='system'] *,
+    [data-motion='system'] *::before,
+    [data-motion='system'] *::after {
+      --tw-enter-translate-x: 0 !important;
+      --tw-enter-translate-y: 0 !important;
+      --tw-enter-scale: 1 !important;
+      --tw-enter-rotate: 0 !important;
+      --tw-exit-translate-x: 0 !important;
+      --tw-exit-translate-y: 0 !important;
+      --tw-exit-scale: 1 !important;
+      --tw-exit-rotate: 0 !important;
+      transition-duration: 0s !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

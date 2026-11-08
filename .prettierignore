@@ -1,0 +1,7 @@
+dist
+node_modules
+package-lock.json
+src/routeTree.gen.ts
+e2e/fixtures/
+test-results/
+playwright-report/
