@@ -50,12 +50,12 @@ https://github.com/user-attachments/assets/44478d21-0c91-4a0d-b4a6-216c97ef72f1
 
 | Keys                                                                                            | Action                                                              |
 | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| <kbd>‚åò</kbd> <kbd>K</kbd>                                                                       | Command menu: jump to any task, project or person, or run a command |
+| <kbd>⌘</kbd> <kbd>K</kbd>                                                                       | Command menu: jump to any task, project or person, or run a command |
 | <kbd>/</kbd>                                                                                    | Search                                                              |
 | <kbd>N</kbd> / <kbd>P</kbd>                                                                     | New task / new project                                              |
 | <kbd>G</kbd> then <kbd>H</kbd> <kbd>T</kbd> <kbd>P</kbd> <kbd>I</kbd> <kbd>C</kbd> <kbd>S</kbd> | Go to Home, My Tasks, Projects, Inbox, Calendar or Settings         |
 | <kbd>[</kbd>                                                                                    | Collapse or expand the sidebar                                      |
-| <kbd>‚åò</kbd> <kbd>‚áß</kbd> <kbd>L</kbd>                                                          | Switch between light and dark                                       |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd>                                                          | Switch between light and dark                                       |
 | <kbd>?</kbd>                                                                                    | Every shortcut                                                      |
 
 ### Yours to tune
@@ -87,7 +87,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5174. To start over with fresh demo data, choose **Help & resources ‚Üí Reset demo data** in the sidebar.
+Open http://localhost:5174. To start over with fresh demo data, choose **Help & resources → Reset demo data** in the sidebar.
 
 ### Deploy your own
 
