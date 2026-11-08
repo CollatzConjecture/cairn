@@ -447,7 +447,7 @@ function Topbar() {
         </Button>
       </CreateMenu>
       <UserMenu className="w-65">
-        <Button variant="ghost" size="icon" className="w-auto border-0 px-0.5 max-sm:hidden" aria-label="Account menu">
+        <Button variant="ghost" size="icon" className="rounded-full border-0 max-sm:hidden" aria-label="Account menu">
           <Avatar id={me} size="md" tip={false} />
         </Button>
       </UserMenu>

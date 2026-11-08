@@ -25,8 +25,8 @@ import {
   visibleProjects,
   type Ui,
 } from '../store';
-import { Avatar, AvatarStack, Dot, Empty, PriorityIcon, ProgressBar, ProjectIcon, ProjectStatusBadge } from '../ui/helpers';
-import { Feed, Grid2, Page, PageHeader, Panel, PanelHeader, Seg, Stack, Stat, Stats, barTone, stretched, tc } from './kit';
+import { Avatar, AvatarStack, Dot, Empty, PriorityIcon, ProgressBar, ProjectIcon, ProjectStatusBadge, Tip } from '../ui/helpers';
+import { Feed, Grid2, Page, PageHeader, Panel, PanelHeader, Seg, Stat, Stats, barTone, stretched, tc } from './kit';
 
 type HomeTab = Ui['homeTab'];
 const doneThisWeek = (t: Task) => t.status === 'done' && !!t.completedAt && Date.now() - t.completedAt < 7 * DAY;
@@ -149,11 +149,18 @@ function Deadlines({ open }: { open: readonly Task[] }) {
       open.filter(t => t.due && diffD(parse(t.due), TODAY) >= a && diffD(parse(t.due), TODAY) <= b),
       { f: 'priority', dir: 1 },
     );
-  const groups = [
-    ['Today', within(0, 0)],
-    ['Tomorrow', within(1, 1)],
-    ['This week', within(2, 7)],
-  ] as const;
+  let left = 6;
+  const groups = (
+    [
+      ['Today', within(0, 0)],
+      ['Tomorrow', within(1, 1)],
+      ['This week', within(2, 7)],
+    ] as const
+  ).map(([lab, ts]) => {
+    const shown = ts.slice(0, left);
+    left -= shown.length;
+    return [lab, ts, shown] as const;
+  });
   return (
     <Panel>
       <PanelHeader title="Upcoming deadlines">
@@ -163,7 +170,7 @@ function Deadlines({ open }: { open: readonly Task[] }) {
         </Button>
       </PanelHeader>
       <div className="px-3.5 pb-1.5">
-        {groups.map(([lab, ts]) => (
+        {groups.map(([lab, ts, shown]) => (
           <div key={lab} className="mb-2.5">
             <h3 className="mb-1 flex items-center gap-2 text-[11.5px] font-semibold text-fg-2">
               {lab}
@@ -171,7 +178,7 @@ function Deadlines({ open }: { open: readonly Task[] }) {
             </h3>
             {ts.length ? (
               <>
-                {ts.slice(0, 4).map(t => (
+                {shown.map(t => (
                   <div key={t.id} className="relative -mx-1.5 flex h-7.5 items-center gap-2 rounded-md px-1.5 transition-colors hover:bg-muted">
                     <Dot c={pColor(projectById(d, t.project))} />
                     <button className={cn(stretched, 'min-w-0 flex-1 truncate')} onClick={() => openTask(t.id)}>
@@ -181,7 +188,7 @@ function Deadlines({ open }: { open: readonly Task[] }) {
                     <Avatar id={t.assignee} size="sm" className="relative z-10" />
                   </div>
                 ))}
-                {ts.length > 4 && <div className="pl-4 text-[11.5px] text-muted-foreground">{`+${ts.length - 4} more`}</div>}
+                {ts.length > shown.length && <div className="pl-4 text-[11.5px] text-muted-foreground">{`+${ts.length - shown.length} more`}</div>}
               </>
             ) : (
               <div className="pt-1 pb-0.5 text-sm text-muted-foreground">Nothing due</div>
@@ -189,6 +196,101 @@ function Deadlines({ open }: { open: readonly Task[] }) {
           </div>
         ))}
       </div>
+    </Panel>
+  );
+}
+
+/* Workload: open tasks per teammate, split by stage. The stages are ordered, so they share one hue stepped by stage: the accent
+   mixed 50%, 75% and 100% into the card (an ordinal ramp that passes the chart palette checks in both themes). Review sits at the
+   baseline, the bar is square there and rounded at its data end, and segments are split by a 2px gap. */
+const STAGES = [
+  { k: 'review', name: 'In review', fill: 'bg-primary' },
+  { k: 'progress', name: 'In progress', fill: 'bg-[color-mix(in_srgb,var(--primary)_75%,var(--card))]' },
+  { k: 'todo', name: 'Not started', fill: 'bg-[color-mix(in_srgb,var(--primary)_50%,var(--card))]' },
+] as const;
+type StageKey = (typeof STAGES)[number]['k'];
+const stageOf = (t: Task): StageKey => (t.status === 'review' ? 'review' : t.status === 'progress' ? 'progress' : 'todo');
+
+function Workload({ open }: { open: readonly Task[] }) {
+  const d = useStore(s => s.data);
+  const rows = d.members
+    .map(m => {
+      const ts = open.filter(t => t.assignee === m.id);
+      const n: Record<StageKey, number> = { review: 0, progress: 0, todo: 0 };
+      for (const t of ts) n[stageOf(t)]++;
+      return { m, n, total: ts.length, over: ts.filter(isOver).length };
+    })
+    .filter(r => r.total)
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 8);
+  const max = Math.max(1, ...rows.map(r => r.total));
+  return (
+    <Panel label="Workload">
+      <PanelHeader title="Workload">
+        <span className="flex items-center gap-3 text-xs text-muted-foreground">
+          {STAGES.map(st => (
+            <span key={st.k} className="flex items-center gap-1.5">
+              <span className={cn('size-2 rounded-[2px]', st.fill)} />
+              {st.name}
+            </span>
+          ))}
+        </span>
+      </PanelHeader>
+      {rows.length ? (
+        <ul className="flex flex-col px-3.5 pb-3">
+          {rows.map(({ m, n, total, over }) => {
+            const parts = STAGES.filter(st => n[st.k]);
+            const desc = `${total} open: ${STAGES.map(st => `${n[st.k]} ${st.name.toLowerCase()}`).join(', ')}${over ? `, ${over} overdue` : ''}`;
+            return (
+              <li key={m.id}>
+                <Tip
+                  label={
+                    <span className="flex flex-col gap-0.5">
+                      <span className="font-medium">{`${m.name} · ${total} open`}</span>
+                      {STAGES.map(st => (
+                        <span key={st.k} className="flex items-center gap-1.5 tabular-nums">
+                          <span className={cn('size-2 rounded-[2px]', st.fill)} />
+                          {`${st.name} ${n[st.k]}`}
+                        </span>
+                      ))}
+                      {over > 0 && <span>{`${over} overdue`}</span>}
+                    </span>
+                  }
+                >
+                  <a
+                    {...linkTo({ r: 'member', id: m.id })}
+                    aria-label={`${m.name}, ${desc}`}
+                    className="-mx-1.5 flex h-8 items-center gap-2.5 rounded-md px-1.5 transition-colors hover:bg-muted"
+                  >
+                    <Avatar id={m.id} size="sm" tip={false} />
+                    <span className="w-16 truncate text-sm">{m.name.split(' ')[0]}</span>
+                    <span className="flex min-w-0 flex-1 items-center gap-2">
+                      <span className="flex h-3 gap-0.5" style={{ width: `calc((100% - 4.5rem) * ${total / max})` }}>
+                        {parts.map((st, i) => (
+                          <span
+                            key={st.k}
+                            className={cn('h-full min-w-1', st.fill, i === parts.length - 1 && 'rounded-r-[4px]')}
+                            style={{ flex: `${n[st.k]} 1 0` }}
+                          />
+                        ))}
+                      </span>
+                      <span className="text-xs text-fg-2 tabular-nums">{total}</span>
+                      {over > 0 && (
+                        <span className="flex items-center gap-0.75 text-xs text-red tabular-nums">
+                          <ClockAlert className="size-3" />
+                          {over}
+                        </span>
+                      )}
+                    </span>
+                  </a>
+                </Tip>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <Empty icon={CircleCheck} title="No open tasks" text="Everyone is clear." level={3} className="py-8" />
+      )}
     </Panel>
   );
 }
@@ -252,29 +354,26 @@ export function HomePage() {
           onClick={() => goTasks('overdue')}
         />
       </Stats>
-      <Grid2>
-        <Stack>
-          <MyTasks />
-          <ProjectProgress ps={activeP} />
-        </Stack>
-        <Stack>
-          <Deadlines open={open} />
-          <Panel>
-            <PanelHeader title="Recent activity">
-              <Button variant="ghost" size="sm" nativeButton={false} render={<a {...linkTo({ r: 'activity' })} />}>
-                View all
-              </Button>
-            </PanelHeader>
-            <div className="px-3.5 pb-3.5">
-              <Feed>
-                {d.activity.slice(0, 7).map(a => (
-                  <ActivityItem key={a.id} a={a} proj />
-                ))}
-              </Feed>
-            </div>
-          </Panel>
-        </Stack>
+      <Grid2 className="mb-4">
+        <MyTasks />
+        <Deadlines open={open} />
+        <Workload open={open} />
+        <Panel>
+          <PanelHeader title="Recent activity">
+            <Button variant="ghost" size="sm" nativeButton={false} render={<a {...linkTo({ r: 'activity' })} />}>
+              View all
+            </Button>
+          </PanelHeader>
+          <div className="px-3.5 pb-3.5">
+            <Feed>
+              {d.activity.slice(0, 5).map(a => (
+                <ActivityItem key={a.id} a={a} proj />
+              ))}
+            </Feed>
+          </div>
+        </Panel>
       </Grid2>
+      <ProjectProgress ps={activeP} />
     </Page>
   );
 }
