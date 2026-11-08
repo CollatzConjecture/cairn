@@ -86,7 +86,7 @@ export function ProjectOverview({ p }: { p: Project }) {
             acts={<span className="text-xs text-muted-foreground">{`${ts.filter(t => t.status === 'done').length} of ${ts.length} tasks done`}</span>}
           >
             <div className="mb-2.5 flex flex-wrap items-baseline gap-2.5">
-              <span className="text-[30px] font-semibold tracking-[-0.03em] tabular-nums" data-count-up>{`${pr}%`}</span>
+              <span className="text-[30px] font-semibold tracking-[-0.03em] tabular-nums">{`${pr}%`}</span>
               <span className="text-fg-2">{daysLeft >= 0 ? `${daysLeft} days until ${fmtDate(p.due)}` : `Ended ${fmtDate(p.due)}`}</span>
               {over.length > 0 && (
                 <Badge variant="outline" className="h-5 gap-1 border-transparent bg-red/10 text-red [&>svg]:size-2.75!">

@@ -95,7 +95,11 @@ function onKey(e: KeyboardEvent, g: { at: number }) {
     shortcuts();
   } else if (e.key === '[') {
     e.preventDefault();
+    // Keyboard toggles skip the slide. data-instant turns the sidebar transition off until the new width has painted.
+    const root = document.documentElement;
+    root.dataset.instant = '';
     toggleSide();
+    requestAnimationFrame(() => requestAnimationFrame(() => delete root.dataset.instant));
   } else if (key === 'e' && u.drawer) {
     e.preventDefault();
     editTask(u.drawer);

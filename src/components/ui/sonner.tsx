@@ -2,7 +2,7 @@ import { Toaster as Sonner, type ToasterProps } from 'sonner';
 import { CircleCheckIcon, InfoIcon, TriangleExclamationPointIcon, CircleExclamationPointIcon, Loader2Icon } from 'lucide-react';
 import { effectiveDark, useStore } from '@/store';
 
-// Cairn: the theme comes from the store (no next-themes), and toasts are inverted (foreground on background).
+// Cairn: the theme comes from the store (no next-themes). Light mode inverts toasts (dark on the light page); dark mode raises them like a menu.
 const Toaster = ({ ...props }: ToasterProps) => {
   const dark = useStore(s => effectiveDark(s.prefs));
 
@@ -22,17 +22,19 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }}
       style={
         {
-          '--normal-bg': 'var(--foreground)',
-          '--normal-text': 'var(--background)',
-          '--normal-border': 'transparent',
+          '--normal-bg': dark ? 'var(--popover)' : 'var(--foreground)',
+          '--normal-text': dark ? 'var(--foreground)' : 'var(--background)',
+          '--normal-border': dark ? 'var(--border)' : 'transparent',
           '--border-radius': 'var(--radius)',
         } as React.CSSProperties
       }
       toastOptions={{
         classNames: {
           toast: 'cn-toast text-sm! shadow-md! gap-2.5!',
-          actionButton: 'bg-transparent! text-background! font-semibold! hover:bg-background/15!',
-          closeButton: 'bg-foreground! text-background! border-background/20!',
+          actionButton: dark
+            ? 'bg-transparent! text-foreground! font-semibold! hover:bg-foreground/10!'
+            : 'bg-transparent! text-background! font-semibold! hover:bg-background/15!',
+          closeButton: dark ? 'bg-popover! text-foreground! border-border!' : 'bg-foreground! text-background! border-background/20!',
         },
       }}
       {...props}

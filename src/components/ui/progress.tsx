@@ -6,7 +6,7 @@ function Progress({ className, children, value, ...props }: ProgressPrimitive.Ro
     <ProgressPrimitive.Root value={value} data-slot="progress" className={cn('flex flex-wrap gap-3', className)} {...props}>
       {children}
       <ProgressTrack>
-        <ProgressIndicator />
+        <ProgressIndicator style={{ transform: `scaleX(${(value ?? 0) / 100})` }} />
       </ProgressTrack>
     </ProgressPrimitive.Root>
   );
@@ -24,7 +24,11 @@ function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
 
 function ProgressIndicator({ className, ...props }: ProgressPrimitive.Indicator.Props) {
   return (
-    <ProgressPrimitive.Indicator data-slot="progress-indicator" className={cn('h-full bg-primary transition-[width] duration-300', className)} {...props} />
+    <ProgressPrimitive.Indicator
+      data-slot="progress-indicator"
+      className={cn('h-full w-full! origin-left bg-primary transition-transform duration-300', className)}
+      {...props}
+    />
   );
 }
 

@@ -53,7 +53,7 @@ function TaskChip({ t, week }: { t: Task; week: boolean }) {
   const { setNodeRef, listeners, attributes, isDragging } = useDraggable({ id: t.id });
   const done = t.status === 'done';
   const open = () => !justDragged() && openTask(t.id);
-  const fx = moved && 'animate-in zoom-in-90 duration-300';
+  const fx = moved && 'animate-in zoom-in-90 duration-200';
   return (
     <TaskContextMenu id={t.id}>
       {week ? (

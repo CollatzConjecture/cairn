@@ -269,7 +269,6 @@ export function promptSubmit(value: string) {
 /* ---------- shell ---------- */
 export function setUi<K extends SettableUiKey>(k: K, v: Ui[K]) {
   set(s => {
-    if (/Tab$|Cat$|Mode$|View$/.test(k)) s.ui.fx.tabs = true;
     Object.assign(s.ui, { [k]: v });
   });
 }

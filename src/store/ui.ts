@@ -85,7 +85,7 @@ export type FormErrors = Partial<Record<FormErrorKey, string | null>>;
 export type Upload = { id: UploadId; name: string; size: string; project: ProjectId; task: TaskId | null; pct: number };
 
 /** One-shot motion flags read as `fx-*` classes. They expire on their own (src/store/store.ts), so re-renders never replay them. */
-export type Fx = { route?: true; tab?: true; tabs?: true; done?: TaskId | SubtaskId; added?: TaskId | SubtaskId; moved?: TaskId };
+export type Fx = { done?: TaskId | SubtaskId; added?: TaskId | SubtaskId; moved?: TaskId };
 
 export type Ui = {
   collapsed: boolean;

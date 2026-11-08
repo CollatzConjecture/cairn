@@ -137,39 +137,10 @@ export function back() {
   else go({ r: 'home' });
 }
 
-const reduceMotion = () => {
-  const m = get().prefs.motion;
-  return m === 'reduce' || (m !== 'full' && matchMedia('(prefers-reduced-motion: reduce)').matches);
-};
-/** Headline numbers (elements marked `data-count-up`) count up once when a dashboard is entered. Writes the text node React owns and ends on its value. */
-function countUp() {
-  for (const el of document.querySelectorAll('#main-content[data-fx="route"] [data-count-up]')) {
-    const node = el.firstChild;
-    const m = node?.nodeValue?.match(/^(\d+)(%?)$/);
-    if (!node || !m) continue;
-    const to = Number(m[1]),
-      suf = m[2] ?? '';
-    if (to < 2) continue;
-    const t0 = performance.now(),
-      dur = 520;
-    const step = (now: number) => {
-      const k = Math.min(1, (now - t0) / dur);
-      if (!node.isConnected) return;
-      node.nodeValue = Math.round(to * (1 - Math.pow(1 - k, 3))) + suf;
-      if (k < 1) requestAnimationFrame(step);
-    };
-    node.nodeValue = '0' + suf;
-    requestAnimationFrame(step);
-  }
-}
-
 /** Wires the router to the store: the side effects of `go()` run on every navigation, including browser back and forward. */
 export function bindRouter(r: AppRouter) {
   router = r;
   r.subscribe('onBeforeNavigate', e => {
-    const from = e.fromLocation ? routeOf(e.fromLocation.pathname) : null;
-    const to = routeOf(e.toLocation.pathname);
-    const tabOnly = from?.r === 'project' && to?.r === 'project' && from.id === to.id;
     set(s => {
       const u = s.ui;
       u.mnav = false;
@@ -179,15 +150,13 @@ export function bindRouter(r: AppRouter) {
       u.editCell = null;
       u.loading = false;
       if (u.drawer && innerWidth < 900) u.drawer = null;
-      // The first page load does not animate in.
-      if (e.pathChanged && e.fromLocation) u.fx = tabOnly ? { tab: true, tabs: true } : { route: true, tabs: true };
+      if (e.pathChanged) u.fx = {};
     });
   });
   r.subscribe('onRendered', e => {
     if (!e.pathChanged || !e.fromLocation) return;
     const c = document.querySelector('.content');
     if (c) c.scrollTop = 0;
-    if (!reduceMotion()) countUp();
   });
 }
 

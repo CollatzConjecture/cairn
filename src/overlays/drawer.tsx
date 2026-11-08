@@ -195,7 +195,7 @@ function Attachments({ t }: { t: Task }) {
               <span className="ml-auto text-2xs text-muted-foreground tabular-nums">{`${u.pct}%`}</span>
             </div>
             <div className="mt-1.25 h-1 overflow-hidden rounded-full bg-muted-strong">
-              <div className="h-full bg-primary transition-[width] duration-200" style={{ width: `${u.pct}%` }} />
+              <div className="h-full w-full origin-left bg-primary transition-transform duration-200" style={{ transform: `scaleX(${u.pct / 100})` }} />
             </div>
           </div>
         </div>

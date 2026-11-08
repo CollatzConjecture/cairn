@@ -59,9 +59,7 @@ export function Stat({
         {icon}
         {k}
       </span>
-      <span className={cn('text-[22px] leading-[1.1] font-semibold tracking-[-0.02em] tabular-nums', tone === 'bad' && 'text-red')} data-count-up>
-        {v}
-      </span>
+      <span className={cn('text-[22px] leading-[1.1] font-semibold tracking-[-0.02em] tabular-nums', tone === 'bad' && 'text-red')}>{v}</span>
       {d != null && <span className={cn('text-xs text-muted-foreground', tone === 'up' && 'text-green', tone === 'bad' && 'text-red')}>{d}</span>}
     </>
   );

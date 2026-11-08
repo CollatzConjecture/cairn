@@ -513,7 +513,6 @@ function OfflineBar() {
 export function Shell({ children }: { children: ReactNode }) {
   const collapsed = useStore(s => s.ui.collapsed);
   const mnav = useStore(s => s.ui.mnav);
-  const route = useStore(s => s.ui.fx.route);
   const offline = useStore(s => s.ui.offline);
   const loading = useStore(s => s.ui.loading);
   return (
@@ -534,12 +533,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <SidebarInset className="min-h-0 min-w-0 overflow-hidden" id="main">
         <Topbar />
         {offline && <OfflineBar />}
-        <div
-          className={cn('relative min-h-0 flex-1 overflow-auto outline-none', route && 'animate-in fade-in slide-in-from-bottom-1 duration-200')}
-          id="main-content"
-          tabIndex={-1}
-          data-fx={route ? 'route' : undefined}
-        >
+        <div className="relative min-h-0 flex-1 overflow-auto outline-none" id="main-content" tabIndex={-1}>
           {loading ? <Skeleton /> : children}
         </div>
       </SidebarInset>

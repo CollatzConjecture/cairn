@@ -41,7 +41,7 @@ export function KanbanCard({
         placeholder && 'opacity-35',
         ghost && 'rotate-[1.5deg] cursor-grabbing shadow-drag',
         fxEnter(fx, t.id),
-        fx.done === t.id && 'animate-in zoom-in-[1.02] duration-300',
+        fx.done === t.id && 'animate-in zoom-in-[1.02] duration-200',
       )}
       data-drag-card={t.id}
     >

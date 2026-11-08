@@ -223,7 +223,6 @@ function Body({ p, tab, views }: { p: Project; tab: ProjectTab; views: readonly 
 
 export function ProjectPage({ id, tab }: { id: ProjectId; tab: ProjectTab }) {
   const d = useStore(s => s.data);
-  const fxTab = useStore(s => !!s.ui.fx.tab);
   const p = projectById(d, id);
   if (!p) return <Page404 />;
   if (!canSee(d, p)) return <StateDenied p={p} />;
@@ -231,7 +230,7 @@ export function ProjectPage({ id, tab }: { id: ProjectId; tab: ProjectTab }) {
   return (
     <div className="flex h-full flex-col">
       <Header p={p} tab={tab} views={views} />
-      <div className={cn('flex min-h-0 flex-1 flex-col', fxTab && '*:animate-in *:fade-in *:slide-in-from-bottom-2 *:duration-250')}>
+      <div className="flex min-h-0 flex-1 flex-col">
         <Body p={p} tab={tab} views={views} />
       </div>
     </div>

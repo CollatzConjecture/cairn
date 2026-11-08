@@ -1,5 +1,6 @@
 /* The shared task list: list rows and their cells, bulk actions, activity items, mini rows. */
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useState, type ReactNode } from 'react';
+import { flushSync } from 'react-dom';
 import {
   ArrowDown,
   ArrowUp,
@@ -24,6 +25,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { PR, ST } from '../domain/constants';
 import { ago, relDate } from '../domain/date';
+import type { TaskId } from '../domain/ids';
 import type { Activity, Task } from '../domain/schema';
 import {
   bulkDelete,
@@ -545,14 +547,41 @@ export function ActivityItem({ a, proj = false }: { a: Activity; proj?: boolean 
 }
 
 /** The compact task row on dashboards and profiles. The whole row opens the task. */
+/* Completing from a short list: the check lands first, then a 180ms view transition fades the row out (or restyles it) while the rows
+   below slide into place. Reduced motion, or a browser without view transitions, completes at once. */
+function completeRow(id: TaskId, setPending: (v: boolean) => void) {
+  const m = document.documentElement.dataset.motion;
+  const reduce = m === 'reduce' || (m !== 'full' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (reduce || !('startViewTransition' in document)) return toggleDone(id);
+  setPending(true);
+  setTimeout(() => {
+    const vt = document.startViewTransition(() =>
+      flushSync(() => {
+        setPending(false);
+        toggleDone(id);
+      }),
+    );
+    vt.ready.catch(() => {}); // Skipped (e.g. the same task twice on a page): the change still applies, just without motion.
+  }, 150);
+}
+
 export function MiniRow({ t, noProj = false, av = true }: { t: Task; noProj?: boolean; av?: boolean }) {
   const fx = useStore(s => s.ui.fx);
   const p = useStore(s => projectById(s.data, t.project));
+  const [pending, setPending] = useState(false);
   const done = t.status === 'done';
   return (
     <TaskContextMenu id={t.id}>
-      <div className={cn('relative flex min-h-9.5 items-center gap-2.5 border-t border-divider px-3.5 transition-colors hover:bg-muted', fxEnter(fx, t.id))}>
-        <Checkbox className="relative z-10 rounded-full" checked={done} onCheckedChange={() => toggleDone(t.id)} aria-label={`Complete ${t.title}`} />
+      <div
+        className={cn('relative flex min-h-9.5 items-center gap-2.5 border-t border-divider px-3.5 transition-colors hover:bg-muted', fxEnter(fx, t.id))}
+        style={{ viewTransitionName: `row-${t.id}` }}
+      >
+        <Checkbox
+          className="relative z-10 rounded-full"
+          checked={done !== pending}
+          onCheckedChange={() => !pending && completeRow(t.id, setPending)}
+          aria-label={`Complete ${t.title}`}
+        />
         <Tip label={ST[t.status].name}>
           <span className="relative z-10">
             <StatusIcon st={t.status} />
