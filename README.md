@@ -21,6 +21,10 @@
 
 A cairn is a stack of stones that marks a trail. Cairn does the same for a team's work by keeping milestones, deadlines and who is doing what in view. Everything is saved in your browser, and the first visit opens a demo workspace you can explore, change and reset.
 
+## A one-minute tour
+
+https://github.com/user-attachments/assets/44478d21-0c91-4a0d-b4a6-216c97ef72f1
+
 ## Features
 
 ### Projects your way
@@ -46,12 +50,12 @@ A cairn is a stack of stones that marks a trail. Cairn does the same for a team'
 
 | Keys                                                                                            | Action                                                              |
 | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| <kbd>⌘</kbd> <kbd>K</kbd>                                                                       | Command menu: jump to any task, project or person, or run a command |
+| <kbd>‚åò</kbd> <kbd>K</kbd>                                                                       | Command menu: jump to any task, project or person, or run a command |
 | <kbd>/</kbd>                                                                                    | Search                                                              |
 | <kbd>N</kbd> / <kbd>P</kbd>                                                                     | New task / new project                                              |
 | <kbd>G</kbd> then <kbd>H</kbd> <kbd>T</kbd> <kbd>P</kbd> <kbd>I</kbd> <kbd>C</kbd> <kbd>S</kbd> | Go to Home, My Tasks, Projects, Inbox, Calendar or Settings         |
 | <kbd>[</kbd>                                                                                    | Collapse or expand the sidebar                                      |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd>                                                          | Switch between light and dark                                       |
+| <kbd>‚åò</kbd> <kbd>‚áß</kbd> <kbd>L</kbd>                                                          | Switch between light and dark                                       |
 | <kbd>?</kbd>                                                                                    | Every shortcut                                                      |
 
 ### Yours to tune
@@ -83,7 +87,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5174. To start over with fresh demo data, choose **Help & resources → Reset demo data** in the sidebar.
+Open http://localhost:5174. To start over with fresh demo data, choose **Help & resources ‚Üí Reset demo data** in the sidebar.
 
 ### Deploy your own
 
