@@ -17,3 +17,16 @@ export function useIsMobile() {
 
   return isMobile;
 }
+
+const coarse = () => window.matchMedia('(pointer: coarse)');
+/** True on touch-first devices (phones, tablets), where panels close with a swipe. Mouse users keep the click-only sheets. */
+export function useCoarsePointer() {
+  return React.useSyncExternalStore(
+    onChange => {
+      const mql = coarse();
+      mql.addEventListener('change', onChange);
+      return () => mql.removeEventListener('change', onChange);
+    },
+    () => coarse().matches,
+  );
+}

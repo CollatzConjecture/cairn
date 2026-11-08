@@ -63,7 +63,7 @@ function TaskChip({ t, week }: { t: Task; week: boolean }) {
           {...attributes}
           aria-roledescription="draggable task"
           className={cn(
-            'flex flex-col gap-1.25 rounded-md border bg-card px-2 py-1.75 text-left text-sm transition-colors hover:border-input',
+            'flex touch-manipulation flex-col gap-1.25 rounded-md border bg-card px-2 py-1.75 text-left text-sm transition-colors hover:border-input',
             isDragging && 'opacity-35',
             fx,
           )}
@@ -88,7 +88,7 @@ function TaskChip({ t, week }: { t: Task; week: boolean }) {
           {...attributes}
           aria-roledescription="draggable task"
           className={cn(
-            'flex h-5.5 w-full min-w-0 items-center gap-1.25 rounded-[5px] border border-(--c)/22 bg-(--c)/11 px-1.5 text-left text-xs text-foreground transition-colors hover:bg-(--c)/18',
+            'flex h-5.5 w-full min-w-0 touch-manipulation items-center gap-1.25 rounded-[5px] border border-(--c)/22 bg-(--c)/11 px-1.5 text-left text-xs text-foreground transition-colors hover:bg-(--c)/18',
             'max-sm:h-2 max-sm:rounded-[3px] max-sm:border-0 max-sm:bg-(--c) max-sm:p-0',
             done && 'opacity-55',
             isDragging && 'opacity-35',

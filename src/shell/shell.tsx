@@ -418,7 +418,7 @@ function Topbar() {
       <Crumbs />
       <span className="flex-1" />
       <button
-        className="flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-[0.97] max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2"
+        className="relative flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pointer-coarse:after:absolute pointer-coarse:after:inset-[min(0px,calc(50%-22px))] pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-[0.97] max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2"
         onClick={openPalette}
         aria-label="Search and commands"
       >

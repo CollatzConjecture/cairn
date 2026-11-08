@@ -2,12 +2,13 @@
    While a card is dragged, `drag.cols` holds the live arrangement so it can cross columns; the drop ranks it once (placeCard). */
 import { useRef, useState } from 'react';
 import {
+  closestCorners,
+  defaultDropAnimationSideEffects,
   DndContext,
   DragOverlay,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
-  closestCorners,
   useDroppable,
   useSensor,
   useSensors,
@@ -20,7 +21,7 @@ import { SortableContext, arrayMove, sortableKeyboardCoordinates, useSortable, v
 import { CSS } from '@dnd-kit/utilities';
 import { Ellipsis, GripVertical, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn, reducedMotion } from '@/lib/utils';
 import { ST, STATUSES, type Status } from '../domain/constants';
 import { taskId, type ProjectId, type TaskId } from '../domain/ids';
 import type { Task } from '../domain/schema';
@@ -198,6 +199,14 @@ function Column({
 }
 
 /** `tasks` are the view's (already filtered); each column keeps manual order. */
+// Release phase: the card leaves the finger and lands in its slot quickly on Cairn's strong ease-out (dnd-kit's default is a
+// slower 250ms "ease"), with the original hidden while it lands, as by default.
+const DROP = {
+  duration: 200,
+  easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+  sideEffects: defaultDropAnimationSideEffects({ styles: { active: { opacity: '0' } } }),
+};
+
 export function Board({ tasks, viewKey, project }: { tasks: readonly Task[]; viewKey: ViewKey; project?: ProjectId }) {
   const [drag, setDrag] = useState<{ id: TaskId; cols: Cols } | null>(null);
   const cols = drag?.cols ?? arrange(tasks);
@@ -269,7 +278,7 @@ export function Board({ tasks, viewKey, project }: { tasks: readonly Task[]; vie
           <Column key={s.id} st={s.id} ids={cols[s.id]} tasks={byId} viewKey={viewKey} showProj={!project} />
         ))}
       </div>
-      <DragOverlay>
+      <DragOverlay dropAnimation={reducedMotion() ? null : DROP}>
         {active ? (
           // dnd-kit measures an overlay's only child; this wrapper keeps the tilt out of that rect, so keyboard moves stay aligned.
           <div>

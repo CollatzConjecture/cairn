@@ -30,7 +30,8 @@ import {
   X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetClose, SheetContent, SheetTitle } from '@/components/ui/sheet';
+import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui/drawer';
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { DatePicker, DepsPicker, EstimatePicker, LabelsPicker, RecurPicker } from '../components/pickers';
@@ -62,6 +63,7 @@ import {
   uploadFiles,
   useStore,
 } from '../store';
+import { useCoarsePointer } from '../hooks/use-mobile';
 import { Avatar, Dot, FilePreview, Label, Tip } from '../ui/helpers';
 import { Icon } from '../ui/icon';
 import { CommentBox, CommentItem } from './comment';
@@ -498,9 +500,9 @@ function Header({ t, full }: { t: Task; full: boolean }) {
         </Button>
       </TaskMenu>
       <Tip label="Close  Esc">
-        <SheetClose render={<Button variant="ghost" size="icon-sm" aria-label="Close" />}>
+        <Button variant="ghost" size="icon-sm" aria-label="Close" onClick={closeDrawer}>
           <X className="size-4" />
-        </SheetClose>
+        </Button>
       </Tip>
     </div>
   );
@@ -522,8 +524,15 @@ export function DrawerLayer() {
     if (id && a instanceof HTMLElement && a !== document.body && !popup.current?.contains(a)) opener.current = a;
   }, [id]);
   const st = t && sub?.tid === t.id ? t.subtasks.find(x => x.id === sub.sid) : undefined;
+  // Touch devices get the swipeable drawer (swipe right to close); mouse users keep the click-only sheet, where a drag
+  // inside the panel selects text. Both share Base UI's dialog props.
+  const touch = useCoarsePointer();
+  const Root = (touch ? Drawer : Sheet) as typeof Sheet;
+  const Content = (touch ? DrawerContent : SheetContent) as typeof SheetContent;
+  const Title = touch ? DrawerTitle : SheetTitle;
   return (
-    <Sheet
+    <Root
+      {...(touch && { swipeDirection: 'right' })}
       open={!!id && !!t}
       modal={full}
       disablePointerDismissal={!full}
@@ -540,11 +549,11 @@ export function DrawerLayer() {
         if (!open) setShown(null);
       }}
     >
-      <SheetContent
+      <Content
         ref={popup}
         initialFocus={popup}
         finalFocus={opener}
-        showCloseButton={false}
+        {...(!touch && { showCloseButton: false })}
         overlay={full}
         className={cn(
           'gap-0 p-0 outline-none data-[side=right]:w-[min(620px,100vw)] data-[side=right]:sm:max-w-none',
@@ -563,7 +572,7 @@ export function DrawerLayer() {
       >
         {t && (
           <>
-            <SheetTitle className="sr-only">{st ? `Subtask: ${st.title}` : `Task: ${t.title}`}</SheetTitle>
+            <Title className="sr-only">{st ? `Subtask: ${st.title}` : `Task: ${t.title}`}</Title>
             <Header t={t} full={full} />
             <div className={cn('flex-1 overflow-y-auto px-6 pt-5 pb-8', full && 'sm:px-12 sm:pt-7 sm:pb-10', 'max-sm:px-4 max-sm:pt-4 max-sm:pb-10')}>
               {st ? (
@@ -582,7 +591,7 @@ export function DrawerLayer() {
             </div>
           </>
         )}
-      </SheetContent>
-    </Sheet>
+      </Content>
+    </Root>
   );
 }

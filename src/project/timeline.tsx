@@ -151,7 +151,7 @@ function Bar({ t, x, y, w, c, dragging }: { t: Task; x: number; y: number; w: nu
             aria-label={t.title}
             title={`${t.title} · ${fmtDate(s)} → ${fmtDate(t.due)}`}
             className={cn(
-              'absolute inset-0 isolate flex cursor-grab items-center gap-1.5 overflow-hidden rounded-md border border-(--c)/45 bg-background px-2 before:absolute before:inset-0 before:-z-20 before:bg-(--c)/16 text-sm whitespace-nowrap text-foreground transition-[border-color,box-shadow] select-none hover:border-(--c)',
+              'absolute inset-0 isolate flex cursor-grab touch-manipulation items-center gap-1.5 overflow-hidden rounded-md border border-(--c)/45 bg-background px-2 before:absolute before:inset-0 before:-z-20 before:bg-(--c)/16 text-sm whitespace-nowrap text-foreground transition-[border-color,box-shadow] select-none hover:border-(--c)',
               t.status === 'done' && 'opacity-60',
               dragging && 'cursor-grabbing shadow-drag',
             )}

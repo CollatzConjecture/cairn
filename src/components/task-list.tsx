@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { cn } from '@/lib/utils';
+import { cn, reducedMotion } from '@/lib/utils';
 import { PR, ST } from '../domain/constants';
 import { ago, relDate } from '../domain/date';
 import type { TaskId } from '../domain/ids';
@@ -550,9 +550,7 @@ export function ActivityItem({ a, proj = false }: { a: Activity; proj?: boolean 
 /* Completing from a short list: the check lands first, then a 180ms view transition fades the row out (or restyles it) while the rows
    below slide into place. Reduced motion, or a browser without view transitions, completes at once. */
 function completeRow(id: TaskId, setPending: (v: boolean) => void) {
-  const m = document.documentElement.dataset.motion;
-  const reduce = m === 'reduce' || (m !== 'full' && matchMedia('(prefers-reduced-motion: reduce)').matches);
-  if (reduce || !('startViewTransition' in document)) return toggleDone(id);
+  if (reducedMotion() || !('startViewTransition' in document)) return toggleDone(id);
   setPending(true);
   setTimeout(() => {
     const vt = document.startViewTransition(() =>
@@ -573,7 +571,10 @@ export function MiniRow({ t, noProj = false, av = true }: { t: Task; noProj?: bo
   return (
     <TaskContextMenu id={t.id}>
       <div
-        className={cn('relative flex min-h-9.5 items-center gap-2.5 border-t border-divider px-3.5 transition-colors hover:bg-muted', fxEnter(fx, t.id))}
+        className={cn(
+          'relative flex min-h-9.5 items-center gap-2.5 border-t border-divider px-3.5 transition-colors hover:bg-muted pointer-coarse:min-h-11',
+          fxEnter(fx, t.id),
+        )}
         style={{ viewTransitionName: `row-${t.id}` }}
       >
         <Checkbox

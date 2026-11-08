@@ -1,6 +1,6 @@
 /* Onboarding: six steps, one route each. Choices live in `ui.onbData`, so
    moving back and forth keeps them; finishing creates the workspace, the first project and the invites. */
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
   ArrowLeft,
   ArrowRight,
@@ -362,7 +362,7 @@ function Step({ step, o }: { step: number; o: OnbData }) {
   return (
     <>
       <div className="flex justify-center">
-        <span className="grid size-12 place-items-center rounded-xl bg-green/14 text-green animate-in zoom-in-95 fade-in duration-250">
+        <span className="grid size-12 place-items-center rounded-xl bg-green/14 text-green">
           <CircleCheck className="size-5.5" />
         </span>
       </div>
@@ -388,6 +388,14 @@ function Step({ step, o }: { step: number; o: OnbData }) {
 }
 
 export function OnboardingPage({ step }: { step: number }) {
+  // Which way the last step change went (Next, Back or the browser's back): forward steps enter from the right, earlier
+  // steps from the left. Derived while rendering, so it is reactive.
+  const [shown, setShown] = useState(step);
+  const [dir, setDir] = useState<1 | -1>(1);
+  if (step !== shown) {
+    setShown(step);
+    setDir(step > shown ? 1 : -1);
+  }
   const o = useStore(s => s.ui.onbData);
   return (
     <AuthShell
@@ -399,7 +407,11 @@ export function OnboardingPage({ step }: { step: number }) {
     >
       <div
         key={step}
-        className={cn('flex w-full flex-col gap-4 animate-in fade-in slide-in-from-bottom-2 duration-250', step === 5 ? 'max-w-110' : 'max-w-140')}
+        className={cn(
+          'flex w-full flex-col gap-4 animate-in fade-in duration-250',
+          dir > 0 ? 'slide-in-from-right-6' : 'slide-in-from-left-6',
+          step === 5 ? 'max-w-110' : 'max-w-140',
+        )}
       >
         <div
           className="mb-2 flex justify-center gap-1.5"
