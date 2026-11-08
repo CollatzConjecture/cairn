@@ -1,6 +1,6 @@
 dist
 node_modules
-package-lock.json
+pnpm-lock.yaml
 src/routeTree.gen.ts
 e2e/fixtures/
 test-results/

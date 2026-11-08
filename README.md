@@ -83,8 +83,8 @@ You need Node.js 22 or newer (`.nvmrc` pins 22).
 ```sh
 git clone https://github.com/CollatzConjecture/cairn.git
 cd cairn
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open http://localhost:5174. To start over with fresh demo data, choose **Help & resources → Reset demo data** in the sidebar.
@@ -93,7 +93,7 @@ Open http://localhost:5174. To start over with fresh demo data, choose **Help & 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCollatzConjecture%2Fcairn)
 
-Cairn builds to static files, so any static host works. `vercel.json` runs `npm run build`, serves `dist/`, and sends every path to `index.html` so the client-side router handles deep links such as `/projects/p1/board`. On another host, add the same single-page-app fallback.
+Cairn builds to static files, so any static host works. `vercel.json` runs `pnpm run build`, serves `dist/`, and sends every path to `index.html` so the client-side router handles deep links such as `/projects/p1/board`. On another host, add the same single-page-app fallback.
 
 ## How it works
 
@@ -105,19 +105,19 @@ Cairn builds to static files, so any static host works. `vercel.json` runs `npm 
 <details>
 <summary><b>Scripts</b></summary>
 
-| Script                 | What it does                                                           |
-| ---------------------- | ---------------------------------------------------------------------- |
-| `npm run dev`          | Starts the Vite dev server on port 5174.                               |
-| `npm run build`        | Builds the production bundle into `dist/`.                             |
-| `npm run preview`      | Serves `dist/` on port 5174.                                           |
-| `npm run typecheck`    | Runs `tsc`.                                                            |
-| `npm run lint`         | Runs ESLint.                                                           |
-| `npm run format`       | Formats every file with Prettier.                                      |
-| `npm run format:check` | Fails if a file is not formatted.                                      |
-| `npm run test`         | Runs the Vitest unit tests.                                            |
-| `npm run e2e`          | Runs the Playwright specs in `e2e/` against a dev server on port 5180. |
+| Script                  | What it does                                                           |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `pnpm run dev`          | Starts the Vite dev server on port 5174.                               |
+| `pnpm run build`        | Builds the production bundle into `dist/`.                             |
+| `pnpm run preview`      | Serves `dist/` on port 5174.                                           |
+| `pnpm run typecheck`    | Runs `tsc`.                                                            |
+| `pnpm run lint`         | Runs ESLint.                                                           |
+| `pnpm run format`       | Formats every file with Prettier.                                      |
+| `pnpm run format:check` | Fails if a file is not formatted.                                      |
+| `pnpm run test`         | Runs the Vitest unit tests.                                            |
+| `pnpm run e2e`          | Runs the Playwright specs in `e2e/` against a dev server on port 5180. |
 
-The end-to-end specs need Chromium once: `npx playwright install chromium`.
+The end-to-end specs need Chromium once: `pnpm exec playwright install chromium`.
 
 </details>
 

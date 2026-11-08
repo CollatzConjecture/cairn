@@ -20,7 +20,7 @@ export default defineConfig({
   webServer: process.env.E2E_URL
     ? undefined
     : {
-        command: 'npx vite --port 5180 --strictPort',
+        command: 'pnpm exec vite --port 5180 --strictPort',
         url: 'http://localhost:5180',
         reuseExistingServer: !process.env.CI,
       },
