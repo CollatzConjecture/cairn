@@ -199,17 +199,11 @@ export function FilesTab({ pid }: { pid: ProjectId }) {
           </SelectContent>
         </Select>
         <span className="flex-1" />
-        <ToggleGroup
-          spacing={0.5}
-          value={[view]}
-          onValueChange={v => setUi('fileView', v[0] === 'list' ? 'list' : 'grid')}
-          aria-label="File layout"
-          className="rounded-md bg-muted-strong p-0.5"
-        >
-          <ToggleGroupItem value="grid" size="sm" className="h-6 min-w-0 px-2.25 data-pressed:bg-background data-pressed:shadow-xs" aria-label="Grid view">
+        <ToggleGroup spacing={0.5} value={[view]} onValueChange={v => setUi('fileView', v[0] === 'list' ? 'list' : 'grid')} aria-label="File layout">
+          <ToggleGroupItem value="grid" size="sm" aria-label="Grid view">
             <LayoutGrid className="size-3.25" />
           </ToggleGroupItem>
-          <ToggleGroupItem value="list" size="sm" className="h-6 min-w-0 px-2.25 data-pressed:bg-background data-pressed:shadow-xs" aria-label="List view">
+          <ToggleGroupItem value="list" size="sm" aria-label="List view">
             <List className="size-3.25" />
           </ToggleGroupItem>
         </ToggleGroup>

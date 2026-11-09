@@ -8,6 +8,8 @@ import { cn } from 'cn';
 
 import { toggleVariants } from '@/components/ui/toggle';
 
+// Cairn: toggle groups are segmented controls, a muted-strong track with raised 24px items.
+
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants> & {
     spacing?: number;
@@ -42,7 +44,7 @@ function ToggleGroup({
       data-orientation={orientation}
       style={{ '--gap': spacing } as React.CSSProperties}
       className={cn(
-        'group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-vertical:flex-col data-vertical:items-stretch',
+        'group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md bg-muted-strong p-0.5 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-vertical:flex-col data-vertical:items-stretch',
         className,
       )}
       {...props}
@@ -73,6 +75,7 @@ function ToggleGroupItem({
           variant: context.variant || variant,
           size: context.size || size,
         }),
+        'h-6 min-w-0 px-2.25 text-xs data-pressed:bg-background data-pressed:shadow-xs',
         className,
       )}
       {...props}

@@ -167,14 +167,9 @@ export function UserMenu({ children, align = 'end', side, className }: Trigger) 
         <DropdownMenuGroup>
           <DropdownMenuLabel>Theme</DropdownMenuLabel>
           <div className="px-1.5 pt-0.5 pb-1.5">
-            <ToggleGroup
-              value={[theme]}
-              onValueChange={v => v[0] && setTheme(v[0] as Prefs['theme'])}
-              aria-label="Theme"
-              className="w-full rounded-md bg-muted-strong p-0.5"
-            >
+            <ToggleGroup value={[theme]} onValueChange={v => v[0] && setTheme(v[0] as Prefs['theme'])} aria-label="Theme" className="w-full">
               {THEMES.map(([k, I, n]) => (
-                <ToggleGroupItem key={k} value={k} size="sm" className="h-6 flex-1 gap-1.25 text-xs data-pressed:bg-background data-pressed:shadow-xs">
+                <ToggleGroupItem key={k} value={k} size="sm" className="flex-1 gap-1.25">
                   <I className="size-3.25" />
                   {n}
                 </ToggleGroupItem>

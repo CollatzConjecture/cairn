@@ -44,7 +44,6 @@ const GROUP_ITEMS: { value: Ui['tlGroup']; label: string }[] = [
   { value: 'none', label: 'No grouping' },
 ];
 const isGroup = (v: unknown): v is Ui['tlGroup'] => GROUP_ITEMS.some(o => o.value === v);
-const seg = 'h-6 min-w-0 px-2.25 text-xs data-pressed:bg-background data-pressed:shadow-xs';
 
 /** Zoom, grouping, and a jump back to today. */
 export function TimelineControls() {
@@ -52,17 +51,11 @@ export function TimelineControls() {
   const group = useStore(s => s.ui.tlGroup);
   return (
     <>
-      <ToggleGroup
-        spacing={0.5}
-        value={[zoom]}
-        onValueChange={v => setUi('tlZoom', v[0] === 'month' ? 'month' : 'week')}
-        aria-label="Zoom"
-        className="ml-1 rounded-md bg-muted-strong p-0.5"
-      >
-        <ToggleGroupItem value="week" size="sm" className={seg}>
+      <ToggleGroup spacing={0.5} value={[zoom]} onValueChange={v => setUi('tlZoom', v[0] === 'month' ? 'month' : 'week')} aria-label="Zoom" className="ml-1">
+        <ToggleGroupItem value="week" size="sm">
           Weeks
         </ToggleGroupItem>
-        <ToggleGroupItem value="month" size="sm" className={seg}>
+        <ToggleGroupItem value="month" size="sm">
           Months
         </ToggleGroupItem>
       </ToggleGroup>

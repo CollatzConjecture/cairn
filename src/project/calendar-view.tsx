@@ -306,15 +306,9 @@ export function CalendarView({ tasks, viewKey, project, events = false }: { task
               ))}
             </span>
           )}
-          <ToggleGroup
-            spacing={0.5}
-            value={[mode]}
-            onValueChange={v => setUi('calMode', v[0] === 'week' ? 'week' : 'month')}
-            aria-label="Calendar range"
-            className="rounded-md bg-muted-strong p-0.5"
-          >
+          <ToggleGroup spacing={0.5} value={[mode]} onValueChange={v => setUi('calMode', v[0] === 'week' ? 'week' : 'month')} aria-label="Calendar range">
             {(['month', 'week'] as const).map(k => (
-              <ToggleGroupItem key={k} value={k} size="sm" className="h-6 min-w-0 px-2.25 text-xs data-pressed:bg-background data-pressed:shadow-xs">
+              <ToggleGroupItem key={k} value={k} size="sm">
                 {k === 'month' ? 'Month' : 'Week'}
               </ToggleGroupItem>
             ))}

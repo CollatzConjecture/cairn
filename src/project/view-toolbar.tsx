@@ -115,13 +115,13 @@ function SortMenu({ viewKey, children }: Trigger & { viewKey: ViewKey }) {
               })
             }
             aria-label="Sort direction"
-            className="w-full rounded-md bg-muted-strong p-0.5"
+            className="w-full"
           >
-            <ToggleGroupItem value="1" size="sm" className="h-6 flex-1 gap-1.25 text-xs data-pressed:bg-background data-pressed:shadow-xs">
+            <ToggleGroupItem value="1" size="sm" className="flex-1 gap-1.25">
               <ArrowUp className="size-3" />
               Ascending
             </ToggleGroupItem>
-            <ToggleGroupItem value="-1" size="sm" className="h-6 flex-1 gap-1.25 text-xs data-pressed:bg-background data-pressed:shadow-xs">
+            <ToggleGroupItem value="-1" size="sm" className="flex-1 gap-1.25">
               <ArrowDown className="size-3" />
               Descending
             </ToggleGroupItem>
