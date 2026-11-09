@@ -67,7 +67,7 @@ export const fxEnter = (fx: Fx, id: string) => fx.added === id && 'animate-in fa
 
 /** A field cell: a borderless pill that opens its picker. */
 export const pill =
-  'inline-flex h-6.5 max-w-full items-center gap-1.5 rounded-md px-1.75 text-sm whitespace-nowrap text-foreground transition-colors hover:bg-muted active:scale-[0.97] aria-expanded:bg-muted data-[empty]:text-muted-foreground [&_svg]:shrink-0';
+  'inline-flex h-6.5 max-w-full items-center gap-1.5 rounded-md px-1.75 text-sm whitespace-nowrap text-foreground transition-colors hover:bg-muted active:scale-97 aria-expanded:bg-muted data-[empty]:text-muted-foreground [&_svg]:shrink-0';
 
 export const LCOLS = {
   status: ['Status', '126px'],

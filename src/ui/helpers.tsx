@@ -171,7 +171,7 @@ export const Dot = ({ c, round = false, className }: { c: string; round?: boolea
 );
 export const Label = ({ id }: { id: LabelId }) => (
   <Badge variant="outline" className="h-5 gap-1.25 rounded-[5px] bg-background pr-1.75 pl-1.5 font-normal text-fg-2">
-    <Dot c={LB[id].c} className="size-1.5 rounded-[2px]" />
+    <Dot c={LB[id].c} className="size-1.5 rounded-xs" />
     {LB[id].name}
   </Badge>
 );
@@ -267,7 +267,7 @@ export function CommentText({ text }: { text: string }) {
   );
 }
 
-const line = 'block h-1 rounded-[2px] bg-muted-strong';
+const line = 'block h-1 rounded-xs bg-muted-strong';
 /**
  * A drawn thumbnail per file type with the extension badge. Size it with `className` or `style`. `lg` scales the art with the preview's
  * width, for a full-size preview. It sets Tailwind's spacing unit from the container width, so the art's spacing utilities grow with it.
@@ -310,7 +310,7 @@ export function FilePreview({
           <i className={cn(line, 'w-1/2 bg-input')} />
           <i className={line} />
           <i className={cn(line, 'w-[70%]')} />
-          <i className="block h-4.5 rounded-[2px]" style={{ background: mix(20) }} />
+          <i className="block h-4.5 rounded-xs" style={{ background: mix(20) }} />
         </div>
         <div className="w-[34%] rounded-[3px]" style={{ background: mix(14) }} />
       </div>

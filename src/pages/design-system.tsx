@@ -239,7 +239,7 @@ export function DesignSystemPage() {
             {[1, 2, 3, 4, 5, 6, 8, 10, 12].map(n => (
               <div key={n} className="flex h-5.5 items-center gap-2 text-xs">
                 <code className="w-14 font-mono text-muted-foreground">{`${n * 4}px`}</code>
-                <span className="h-2 rounded-[2px] bg-primary/70" style={{ width: n * 4 }} />
+                <span className="h-2 rounded-xs bg-primary/70" style={{ width: n * 4 }} />
               </div>
             ))}
           </Panel>

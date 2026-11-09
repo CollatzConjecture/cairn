@@ -198,7 +198,7 @@ function MilestoneLane({ ms, X, dw, y }: { ms: readonly Milestone[]; X: (ds: str
           aria-label={`Milestone: ${tip}`}
         >
           <span
-            className={cn('size-3 shrink-0 rotate-45 rounded-[2px]', first.p ? 'bg-(--c)' : 'bg-foreground')}
+            className={cn('size-3 shrink-0 rotate-45 rounded-xs', first.p ? 'bg-(--c)' : 'bg-foreground')}
             style={first.p ? { '--c': pColor(first.p) } : undefined}
           />
           {room >= 28 && (

@@ -72,7 +72,7 @@ function submitProject(edit: ProjectId | null): boolean {
 
 const fieldLabel = 'text-sm font-medium';
 const isColor = (k: string): k is ProjectColor => k in PCOLORS;
-const pick = 'grid place-items-center rounded-md transition-[background-color,box-shadow,transform] active:scale-[0.97]';
+const pick = 'grid place-items-center rounded-md transition-[background-color,box-shadow,transform] active:scale-97';
 
 export function ProjectModal({ edit }: { edit: ProjectId | null }) {
   const f = useStore(s => s.ui.pform);
@@ -254,7 +254,7 @@ export function ProjectModal({ edit }: { edit: ProjectId | null }) {
                 role="radio"
                 aria-checked={f.tmpl === t.id}
                 className={cn(
-                  'flex flex-col items-start gap-1 rounded-lg border p-2.5 text-left text-xs text-muted-foreground transition-[background-color,border-color,transform] hover:bg-muted active:scale-[0.98]',
+                  'flex flex-col items-start gap-1 rounded-lg border p-2.5 text-left text-xs text-muted-foreground transition-[background-color,border-color,transform] hover:bg-muted active:scale-98',
                   f.tmpl === t.id && 'border-primary bg-primary-soft ring-1 ring-primary hover:bg-primary-soft',
                 )}
                 onClick={() => pickTemplate(t.id)}

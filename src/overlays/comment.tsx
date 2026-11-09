@@ -22,7 +22,7 @@ export function delComment(c: Comment) {
 }
 
 const reactBtn =
-  'inline-flex h-5.5 items-center gap-1 rounded-full border bg-background px-1.75 text-xs transition-[background-color,border-color,transform] hover:bg-muted active:scale-[0.97]';
+  'inline-flex h-5.5 items-center gap-1 rounded-full border bg-background px-1.75 text-xs transition-[background-color,border-color,transform] hover:bg-muted active:scale-97';
 
 /** Author, time, text with mentions, reactions. Your own comments can be deleted. */
 export function CommentItem({ c }: { c: Comment }) {

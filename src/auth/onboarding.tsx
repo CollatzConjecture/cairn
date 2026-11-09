@@ -125,7 +125,7 @@ function Options({
             role="radio"
             aria-checked={on}
             className={cn(
-              'flex flex-col gap-2 rounded-xl border bg-card px-3 py-3.5 text-left transition-[border-color,box-shadow,transform] hover:border-input active:scale-[0.98]',
+              'flex flex-col gap-2 rounded-xl border bg-card px-3 py-3.5 text-left transition-[border-color,box-shadow,transform] hover:border-input active:scale-98',
               on && 'border-primary ring-3 ring-primary-soft hover:border-primary',
             )}
             onClick={() => onChange(o.value)}

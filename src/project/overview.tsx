@@ -184,7 +184,7 @@ export function ProjectOverview({ p }: { p: Project }) {
                 const past = diffD(parse(m.date), TODAY) < 0;
                 return (
                   <div key={m.name + m.date} className="flex h-8 items-center gap-2 text-[13px]">
-                    <span className={cn('mx-0.75 size-2.25 shrink-0 rotate-45 rounded-[2px]', past ? 'bg-green' : 'bg-(--c)')} style={{ '--c': pColor(p) }} />
+                    <span className={cn('mx-0.75 size-2.25 shrink-0 rotate-45 rounded-xs', past ? 'bg-green' : 'bg-(--c)')} style={{ '--c': pColor(p) }} />
                     <span className={cn('min-w-0 flex-1 truncate', past && 'text-muted-foreground')}>{m.name}</span>
                     <span className="text-fg-2 tabular-nums">{fmtDate(m.date)}</span>
                   </div>

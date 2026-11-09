@@ -253,7 +253,7 @@ The board, the timeline, and the subtask checklist use `@dnd-kit`. List rows and
 
 ## Motion
 
-- Anything pressable scales to `active:scale-[0.97]`. The shadcn `Button` already does.
+- Anything pressable scales to `active:scale-97`. The shadcn `Button` already does.
 - Popovers and menus scale from their trigger with `origin-(--transform-origin)`. Never set the origin to the centre on an anchored surface. Modals and sheets stay centred or edge-anchored.
 - Enter with the theme's ease-out, `cubic-bezier(0.23, 1, 0.32, 1)`. `ease-out`, the default transition curve, and tw-animate-css's `animate-in` and `animate-out` all use it. Keep durations between `duration-150` and `duration-250`. Never animate from scale 0: use `zoom-in-95`, not `zoom-in`.
 - Surfaces opened from the keyboard many times a day open without animation. The command palette passes `instant` to `DialogContent`.

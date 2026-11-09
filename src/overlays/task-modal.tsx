@@ -106,7 +106,7 @@ function submitTask(edit: TaskId | null): boolean {
 }
 
 const chip =
-  'inline-flex h-6.5 items-center gap-1.5 rounded-md border bg-background px-2 text-sm whitespace-nowrap transition-colors hover:bg-muted active:scale-[0.97] aria-expanded:bg-muted [&_svg]:shrink-0';
+  'inline-flex h-6.5 items-center gap-1.5 rounded-md border bg-background px-2 text-sm whitespace-nowrap transition-colors hover:bg-muted active:scale-97 aria-expanded:bg-muted [&_svg]:shrink-0';
 const fieldLabel = 'text-sm font-medium';
 
 export function TaskModal({ edit }: { edit: TaskId | null }) {

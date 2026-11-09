@@ -156,7 +156,7 @@ export function OverviewPage() {
                     key={m.p.id + m.name}
                     className="relative -mx-1.5 flex h-8 items-center gap-2 rounded-md px-1.5 text-[13px] transition-colors hover:bg-muted"
                   >
-                    <span className="mx-0.75 size-2.25 shrink-0 rotate-45 rounded-[2px] bg-(--c)" style={{ '--c': pColor(m.p) }} />
+                    <span className="mx-0.75 size-2.25 shrink-0 rotate-45 rounded-xs bg-(--c)" style={{ '--c': pColor(m.p) }} />
                     <button className={cn(stretched, 'min-w-0 flex-1 truncate')} onClick={() => go({ r: 'project', id: m.p.id, tab: 'timeline' })}>
                       {m.name} <span className="text-muted-foreground">{`· ${m.p.name}`}</span>
                     </button>

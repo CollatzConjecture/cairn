@@ -186,7 +186,7 @@ export function TeamModal({ edit }: { edit: TeamId | null }) {
                   aria-checked={f.icon === i}
                   aria-label={i}
                   className={cn(
-                    'grid h-8 place-items-center rounded-md text-fg-2 transition-[background-color,transform] hover:bg-muted active:scale-[0.94]',
+                    'grid h-8 place-items-center rounded-md text-fg-2 transition-[background-color,transform] hover:bg-muted active:scale-94',
                     f.icon === i && 'bg-primary-soft text-primary ring-1 ring-primary-line hover:bg-primary-soft',
                   )}
                   onClick={() => setForm(x => void (x.icon = i))}

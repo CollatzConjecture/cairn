@@ -230,7 +230,7 @@ function Workload({ open }: { open: readonly Task[] }) {
         <span className="flex items-center gap-3 text-xs text-muted-foreground">
           {STAGES.map(st => (
             <span key={st.k} className="flex items-center gap-1.5">
-              <span className={cn('size-2 rounded-[2px]', st.fill)} />
+              <span className={cn('size-2 rounded-xs', st.fill)} />
               {st.name}
             </span>
           ))}
@@ -249,7 +249,7 @@ function Workload({ open }: { open: readonly Task[] }) {
                       <span className="font-medium">{`${m.name} · ${total} open`}</span>
                       {STAGES.map(st => (
                         <span key={st.k} className="flex items-center gap-1.5 tabular-nums">
-                          <span className={cn('size-2 rounded-[2px]', st.fill)} />
+                          <span className={cn('size-2 rounded-xs', st.fill)} />
                           {`${st.name} ${n[st.k]}`}
                         </span>
                       ))}

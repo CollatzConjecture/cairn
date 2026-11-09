@@ -277,7 +277,7 @@ function PaletteBox({ pl }: { pl: Palette }) {
               key={k}
               aria-pressed={pl.scope === k}
               className={cn(
-                'inline-flex h-6 items-center gap-1.25 rounded-full border px-2.25 text-xs text-fg-2 transition-colors hover:bg-muted active:scale-[0.97]',
+                'inline-flex h-6 items-center gap-1.25 rounded-full border px-2.25 text-xs text-fg-2 transition-colors hover:bg-muted active:scale-97',
                 pl.scope === k && 'border-foreground bg-foreground text-background hover:bg-foreground',
               )}
               onMouseDown={e => e.preventDefault()}

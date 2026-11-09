@@ -81,7 +81,7 @@ function MonthGrid({ value, onPick }: { value: string | null; onPick: (v: string
               aria-label={fmtDate(ds, true)}
               aria-pressed={on}
               className={cn(
-                'h-7.5 rounded-md text-xs tabular-nums transition-colors hover:bg-muted active:scale-[0.97]',
+                'h-7.5 rounded-md text-xs tabular-nums transition-colors hover:bg-muted active:scale-97',
                 on
                   ? 'bg-primary font-semibold text-primary-foreground hover:bg-primary'
                   : diffD(d, TODAY) === 0

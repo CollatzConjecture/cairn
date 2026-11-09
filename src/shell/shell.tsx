@@ -418,7 +418,7 @@ function Topbar() {
       <Crumbs />
       <span className="flex-1" />
       <button
-        className="relative flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-[0.97] max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2 pointer-coarse:after:absolute pointer-coarse:after:inset-[min(0px,calc(50%-22px))]"
+        className="relative flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-97 max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2 pointer-coarse:after:absolute pointer-coarse:after:inset-[min(0px,calc(50%-22px))]"
         onClick={openPalette}
         aria-label="Search and commands"
       >
@@ -459,7 +459,7 @@ function BottomNav() {
   const r = useRoute();
   const unread = useStore(s => s.data.notifs.some(n => !n.read && n.type !== 'update'));
   const item =
-    'relative flex min-h-12 flex-1 flex-col items-center gap-0.5 rounded-md py-1.25 text-2xs text-muted-foreground active:scale-[0.97] aria-[current=page]:text-foreground [&_svg]:size-4.75';
+    'relative flex min-h-12 flex-1 flex-col items-center gap-0.5 rounded-md py-1.25 text-2xs text-muted-foreground active:scale-97 aria-[current=page]:text-foreground [&_svg]:size-4.75';
   const b = (to: PageRoute, label: string, I: LucideIcon, extra?: ReactNode) => (
     <a className={item} {...linkTo({ r: to })} aria-current={r?.r === to ? 'page' : undefined}>
       <I />

@@ -209,7 +209,7 @@ export function LineTabs<V extends string>({
             value={i.value}
             aria-label={i.aria}
             className={cn(
-              'h-full flex-none gap-1.5 rounded-none border-0 px-2.5 text-sm text-fg-2 group-data-horizontal/tabs:after:inset-x-2 group-data-horizontal/tabs:after:bottom-0 group-data-horizontal/tabs:after:rounded-[2px] hover:text-foreground data-active:text-foreground',
+              'h-full flex-none gap-1.5 rounded-none border-0 px-2.5 text-sm text-fg-2 group-data-horizontal/tabs:after:inset-x-2 group-data-horizontal/tabs:after:bottom-0 group-data-horizontal/tabs:after:rounded-xs hover:text-foreground data-active:text-foreground',
               itemClassName,
             )}
           >
@@ -351,7 +351,7 @@ export function Swatches<V extends string>({
           aria-label={o.label}
           title={o.label}
           className={cn(
-            'grid shrink-0 place-items-center rounded-full bg-(--c) text-white transition-transform active:scale-[0.94]',
+            'grid shrink-0 place-items-center rounded-full bg-(--c) text-white transition-transform active:scale-94',
             size,
             value === o.value && 'ring-2 ring-(--c) ring-offset-2 ring-offset-background',
           )}
