@@ -6,8 +6,8 @@ import { Board } from '../project/board';
 import { TableView } from '../project/table-view';
 import { ViewToolbar } from '../project/view-toolbar';
 import { allTasks, applyView, canSee, newTask, updateView, useStore, useView, visibleProjects } from '../store';
-import { PageHeader, Seg } from './kit';
-import { flushHeader, listWrap } from './my-tasks';
+import { PageHeader, Seg, flushHeader } from './kit';
+import { listWrap } from './my-tasks';
 
 export function TasksPage() {
   const d = useStore(s => s.data);

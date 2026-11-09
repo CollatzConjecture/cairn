@@ -11,6 +11,9 @@ export const Page = ({ className, ...props }: ComponentProps<'div'>) => (
   <div className={cn('mx-auto max-w-290 px-(--gutter) pt-7 pb-18 max-md:pt-5 max-md:pb-24', className)} {...props} />
 );
 
+/** PageHeader classes for a full-bleed page whose header sits on the gutter and whose body (list, board, calendar) fills the rest. */
+export const flushHeader = 'mb-0 shrink-0 px-(--gutter) pt-6 pb-3';
+
 /** Page title, a line under it, and actions on the right (full width below 640px). */
 export function PageHeader({ title, sub, children, className }: { title: ReactNode; sub?: ReactNode; children?: ReactNode; className?: string }) {
   return (

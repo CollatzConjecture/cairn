@@ -6,10 +6,8 @@ import { TODAY, dOff, diffD, parse } from '../domain/date';
 import { CalendarView } from '../project/calendar-view';
 import { ViewToolbar } from '../project/view-toolbar';
 import { allTasks, applyView, isOver, newTask, setUi, useStore, useView } from '../store';
-import { PageHeader, Seg } from './kit';
+import { PageHeader, Seg, flushHeader } from './kit';
 
-/** Full-bleed page whose header sits on the gutter and whose body (list, board, calendar) fills the rest. */
-export const flushHeader = 'mb-0 px-(--gutter) pt-6 pb-3';
 export const listWrap = 'pr-(--gutter) pb-22.5 pl-[calc(var(--gutter)-26px)] max-sm:px-(--gutter)';
 
 export function MyTasksPage() {

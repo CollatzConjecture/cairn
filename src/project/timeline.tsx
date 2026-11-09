@@ -12,6 +12,7 @@ import { groupTasks } from '../components/view-engine';
 import { MON, MONL, TODAY, addD, diffD, fmtDate, iso, parse, startOfWeek } from '../domain/date';
 import { taskId } from '../domain/ids';
 import type { Project, Task } from '../domain/schema';
+import { PageHeader, flushHeader } from '../pages/kit';
 import {
   allTasks,
   applyView,
@@ -460,12 +461,7 @@ export function TimelinePage() {
   }, []);
   return (
     <div className="flex h-full flex-col">
-      <div className="flex shrink-0 flex-wrap items-start gap-3 px-(--gutter) pt-6 pb-3">
-        <div>
-          <h1 className="text-2xl leading-[1.2] font-semibold tracking-[-0.022em] max-sm:text-xl">Timeline</h1>
-          <p className="mt-1 text-fg-2">Schedules, dependencies, and milestones across projects.</p>
-        </div>
-      </div>
+      <PageHeader className={flushHeader} title="Timeline" sub="Schedules, dependencies, and milestones across projects." />
       <ViewToolbar viewKey="tl" group={false} extra={<TimelineControls />} />
       <TimelineView tasks={applyView(d, allTasks(d), v)} viewKey="tl" />
     </div>
