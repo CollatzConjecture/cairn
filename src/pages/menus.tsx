@@ -56,7 +56,7 @@ function RoleItems({ value, onChange }: { value: Role; onChange: (v: Role) => vo
         <DropdownMenuRadioItem key={r} value={r} closeOnClick className="items-start py-1.75">
           <span className="flex flex-col whitespace-normal">
             <span className="font-medium">{r}</span>
-            <span className="text-[11.5px] text-muted-foreground">{ROLE_INFO[r]}</span>
+            <span className="text-xs text-muted-foreground">{ROLE_INFO[r]}</span>
           </span>
         </DropdownMenuRadioItem>
       ))}

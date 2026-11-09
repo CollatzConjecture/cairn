@@ -171,7 +171,7 @@ export function MembersPage() {
       {tab === 'teams' ? (
         <>
           <div className="mb-3 flex items-center">
-            <span className="text-[13px] text-fg-2">{`${d.teams.length} teams`}</span>
+            <span className="text-sm text-fg-2">{`${d.teams.length} teams`}</span>
             <Button variant="outline" size="sm" className="ml-auto" onClick={newTeam}>
               <Plus />
               New team

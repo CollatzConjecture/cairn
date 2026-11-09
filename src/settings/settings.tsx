@@ -198,7 +198,7 @@ function Appearance() {
                     <Preview dark={k === 'dark'} />
                   )}
                 </div>
-                <span className="flex items-center gap-1.5 text-[13px] font-medium [&_svg]:size-3.5">
+                <span className="flex items-center gap-1.5 text-base font-medium [&_svg]:size-3.5">
                   <I />
                   {label}
                   {on && <CircleCheck className="ml-auto size-3.75! text-primary" />}

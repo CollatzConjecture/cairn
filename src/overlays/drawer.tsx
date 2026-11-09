@@ -265,7 +265,7 @@ function Conversation({ t }: { t: Task }) {
           {cs.length ? (
             cs.map(c => <CommentItem key={c.id} c={c} />)
           ) : (
-            <p className="my-2.5 text-[13px] text-muted-foreground">No comments yet. Start the conversation.</p>
+            <p className="my-2.5 text-sm text-muted-foreground">No comments yet. Start the conversation.</p>
           )}
           <CommentBox tid={t.id} />
         </>
@@ -457,7 +457,7 @@ function Header({ t, full }: { t: Task; full: boolean }) {
         <span className="truncate">{p?.name}</span>
       </button>
       <span className="text-muted-foreground">/</span>
-      <span className="px-1.5 font-mono text-[11.5px] text-muted-foreground">{t.key}</span>
+      <span className="px-1.5 font-mono text-xs text-muted-foreground">{t.key}</span>
       <span className="flex-1" />
       <Button
         variant={done ? 'secondary' : 'ghost'}

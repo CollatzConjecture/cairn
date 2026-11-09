@@ -56,7 +56,7 @@ function MonthGrid({ value, onPick }: { value: string | null; onPick: (v: string
   return (
     <div className="w-63 px-1.5 pt-1.5 pb-0.5">
       <div className="mb-1.5 flex items-center">
-        <b className="grow pl-1 text-[13px] font-semibold">{`${MONL[m.getMonth()]} ${m.getFullYear()}`}</b>
+        <b className="grow pl-1 text-base font-semibold">{`${MONL[m.getMonth()]} ${m.getFullYear()}`}</b>
         <Button variant="ghost" size="icon-xs" onClick={() => shift(-1)} aria-label="Previous month">
           <ChevronLeft />
         </Button>

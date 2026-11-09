@@ -86,7 +86,7 @@ function ConfirmModal({ m }: { m: Of<'confirm'> }) {
           </span>
           <div className="min-w-0 flex-1">
             <AlertDialogTitle className="mt-1 mb-1.5 text-[15px] font-semibold">{m.title}</AlertDialogTitle>
-            <AlertDialogDescription className="text-[13px] leading-[1.55] text-balance text-fg-2">
+            <AlertDialogDescription className="text-sm leading-[1.55] text-balance text-fg-2">
               <Rich body={m.body} />
             </AlertDialogDescription>
           </div>
@@ -160,7 +160,7 @@ function ShortcutsModal() {
         <div key={group}>
           <div className={cn(eyebrow, 'mb-1.5')}>{group}</div>
           {list.map(([name, keys]) => (
-            <div key={name} className="flex h-7.5 items-center gap-1 border-b border-divider text-[13px]">
+            <div key={name} className="flex h-7.5 items-center gap-1 border-b border-divider text-base">
               <span className="flex-1">{name}</span>
               {keys.map((k, i) => (
                 <span key={i} className="flex items-center gap-1">
@@ -596,7 +596,7 @@ function ShareModal({ id }: { id: ProjectId }) {
             <div key={mid} className="flex h-11 items-center gap-2.5">
               <Avatar id={mid} size="md" tip={false} />
               <div className="min-w-0 flex-1">
-                <div className="truncate text-[13px] font-medium">
+                <div className="truncate text-base font-medium">
                   {x.name}
                   {mid === d.me && <span className="font-normal text-muted-foreground"> (you)</span>}
                 </div>

@@ -111,7 +111,7 @@ function ProjectRow({ p }: { p: Project }) {
         </span>
         <span className="flex w-35 items-center gap-2 max-sm:hidden">
           <ProgressBar v={pr} />
-          <span className="text-[11.5px] text-muted-foreground tabular-nums">{`${pr}%`}</span>
+          <span className="text-xs text-muted-foreground tabular-nums">{`${pr}%`}</span>
         </span>
         <span className="w-17.5 text-xs text-fg-2 tabular-nums max-sm:hidden">{fmtDate(p.due)}</span>
         <span className={moreBtn}>
@@ -169,7 +169,7 @@ function ProjectTable({ ps }: { ps: readonly Project[] }) {
                   <TableCell className={tc.cell}>
                     <span className="flex items-center gap-2">
                       <ProgressBar v={pr} />
-                      <span className="text-[11.5px] text-muted-foreground tabular-nums">{`${pr}%`}</span>
+                      <span className="text-xs text-muted-foreground tabular-nums">{`${pr}%`}</span>
                     </span>
                   </TableCell>
                   <TableCell className={cn(tc.cell, 'text-center tabular-nums')}>{tasksOf(d, p.id).length}</TableCell>

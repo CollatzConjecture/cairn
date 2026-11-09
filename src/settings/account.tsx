@@ -321,8 +321,8 @@ export function TwoFactor() {
           <div className="text-fg-2">You&apos;ll enter a code from your authenticator app when signing in on a new device.</div>
         </Callout>
         <SBlock title="Recovery codes">
-          <p className="text-[13px] text-fg-2">Store these somewhere safe. Each code works once.</p>
-          <div className="mt-2 grid w-fit grid-cols-[repeat(2,max-content)] gap-x-7 gap-y-1.5 rounded-lg border bg-sunken p-3.5 font-mono text-[13px] select-all">
+          <p className="text-sm text-fg-2">Store these somewhere safe. Each code works once.</p>
+          <div className="mt-2 grid w-fit grid-cols-[repeat(2,max-content)] gap-x-7 gap-y-1.5 rounded-lg border bg-sunken p-3.5 font-mono text-base select-all">
             {['7KQ2-M8PX', 'D4TN-9WRE', 'HV3C-QZ6L', 'P2YB-J7SK', 'R9FG-4NUD', 'X6MA-T3HE'].map(c => (
               <span key={c}>{c}</span>
             ))}
@@ -344,7 +344,7 @@ export function TwoFactor() {
         <div className="flex min-w-55 flex-1 flex-col gap-2.5">
           <div>
             <b className="font-semibold">1. Scan the QR code</b>
-            <div className="text-[13px] text-fg-2">Use 1Password, Authy, or Google Authenticator.</div>
+            <div className="text-sm text-fg-2">Use 1Password, Authy, or Google Authenticator.</div>
           </div>
           <b className="font-semibold">2. Enter the 6-digit code</b>
           <form
@@ -398,7 +398,7 @@ export function TwoFactor() {
         </span>
         <div className="flex-1">
           <b className="font-semibold">Two-factor authentication is off</b>
-          <p className="mt-1 mb-3 text-[13px] text-fg-2">Protect your account with a code from an authenticator app in addition to your password.</p>
+          <p className="mt-1 mb-3 text-sm text-fg-2">Protect your account with a code from an authenticator app in addition to your password.</p>
           <Button
             onClick={() => {
               setErr(null);
@@ -447,7 +447,7 @@ export function Plan() {
             <div className="mt-1 text-[20px] font-semibold tracking-[-0.015em]">
               {cur} <span className="text-md font-normal text-fg-2">· $12 per member / month</span>
             </div>
-            <div className="text-[13px] text-fg-2">{`Renews ${fmtDate(dOff(7), true)} · Billed monthly`}</div>
+            <div className="text-sm text-fg-2">{`Renews ${fmtDate(dOff(7), true)} · Billed monthly`}</div>
           </div>
           <Button variant="outline" className="ml-auto" nativeButton={false} render={<a {...linkTo({ r: 'settings', sec: 'invoices' })} />}>
             View invoices
@@ -484,7 +484,7 @@ export function Plan() {
                 {`$${PRICE[n]}`}
                 <span className="text-sm font-normal text-fg-2"> /member/mo</span>
               </div>
-              <ul className="flex flex-col gap-1.5 text-[13px]">
+              <ul className="flex flex-col gap-1.5 text-base">
                 {FEATURES[n].map(x => (
                   <li key={x} className="flex items-center gap-2">
                     <Check className="size-3.25 text-green" />

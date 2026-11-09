@@ -32,14 +32,14 @@ function InboxItem({ d, n, on }: { d: Data; n: Notif; on: boolean }) {
     <li className={cn('relative flex items-start gap-2.5 border-b border-divider px-(--gutter) py-3 transition-colors hover:bg-muted', on && 'bg-muted')}>
       {!n.read && <span className="absolute top-5.5 left-1.5 size-1.5 rounded-full bg-primary" aria-label="Unread" />}
       <NotifIcon n={n} />
-      <div className="min-w-0 flex-1 text-[13px] leading-[1.45]">
+      <div className="min-w-0 flex-1 text-base">
         <button className={cn(stretched, 'block')} onClick={() => selNotif(n.id)} aria-current={on || undefined}>
           <NotifText d={d} n={n} />
         </button>
         <div className="mt-0.5 truncate text-sm text-fg-2">
           <CommentText text={n.snippet} />
         </div>
-        <div className="mt-1.25 flex items-center gap-1.5 text-[11.5px] text-muted-foreground">
+        <div className="mt-1.25 flex items-center gap-1.5 text-xs text-muted-foreground">
           <T className="size-2.75" />
           {p && (
             <>
@@ -89,7 +89,7 @@ function Reply({ tid }: { tid: TaskId }) {
         }}
       />
       <div className="flex items-center">
-        <span className="text-[11.5px] text-muted-foreground">{`${MOD}+Enter to send`}</span>
+        <span className="text-xs text-muted-foreground">{`${MOD}+Enter to send`}</span>
         <Button size="sm" className="ml-auto" onClick={() => postComment(tid)}>
           Reply
         </Button>

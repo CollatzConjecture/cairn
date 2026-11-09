@@ -26,7 +26,7 @@ export function StrengthMeter({ pw }: { pw: string }) {
           <i key={i} className={cn('h-1 flex-1 rounded-full bg-muted-strong transition-colors', i < s && bar)} />
         ))}
       </div>
-      <span className={cn('w-15 text-right text-[11.5px]', text)} aria-live="polite">
+      <span className={cn('w-15 text-right text-xs', text)} aria-live="polite">
         <span className="sr-only">Password strength: </span>
         {name}
       </span>

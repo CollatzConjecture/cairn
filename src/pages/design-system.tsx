@@ -249,7 +249,7 @@ export function DesignSystemPage() {
               ['rounded-lg', '8px'],
               ['rounded-xl', '10px'],
             ].map(([r, v]) => (
-              <div key={r} className="flex flex-col items-center gap-1.5 text-[11.5px]">
+              <div key={r} className="flex flex-col items-center gap-1.5 text-xs">
                 <span className={cn('size-12 border-[1.5px] border-input bg-muted', r)} />
                 <span className="text-muted-foreground">{v}</span>
               </div>
@@ -259,7 +259,7 @@ export function DesignSystemPage() {
               ['shadow-md', 'menu'],
               ['shadow-drag', 'drag'],
             ].map(([s, n]) => (
-              <div key={s} className="flex flex-col items-center gap-1.5 text-[11.5px]">
+              <div key={s} className="flex flex-col items-center gap-1.5 text-xs">
                 <span className={cn('size-12 rounded-lg bg-background', s)} />
                 <span className="text-muted-foreground">{n}</span>
               </div>
@@ -299,7 +299,7 @@ export function DesignSystemPage() {
           <Button variant="ghost" size="icon" disabled aria-label="Disabled">
             <Trash />
           </Button>
-          <span className="text-[11.5px] text-muted-foreground">Sizes:</span>
+          <span className="text-xs text-muted-foreground">Sizes:</span>
           <Button variant="outline" size="sm">
             Small
           </Button>

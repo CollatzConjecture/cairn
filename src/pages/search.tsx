@@ -153,7 +153,7 @@ export function SearchPage() {
                     <b className="font-medium text-foreground">{memberById(d, c.by)?.name}</b>
                     {` on ${taskById(d, c.task)?.title} · ${ago(c.at)}`}
                   </div>
-                  <button className={cn(stretched, 'block text-[13px]')} onClick={() => openTask(c.task)}>
+                  <button className={cn(stretched, 'block text-base')} onClick={() => openTask(c.task)}>
                     <Highlight text={c.text} q={q} />
                   </button>
                 </div>

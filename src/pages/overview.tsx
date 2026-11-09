@@ -87,7 +87,7 @@ export function OverviewPage() {
                     <TableCell className={tc.cell}>
                       <span className="flex items-center gap-2">
                         <ProgressBar v={pr} className={p.status === 'complete' ? barTone.green : p.status === 'risk' ? barTone.red : undefined} />
-                        <span className="w-7.5 text-[11.5px] text-muted-foreground tabular-nums">{`${pr}%`}</span>
+                        <span className="w-7.5 text-xs text-muted-foreground tabular-nums">{`${pr}%`}</span>
                       </span>
                     </TableCell>
                     <TableCell className={cn(tc.cell, 'text-center tabular-nums')}>{ts.filter(t => t.status !== 'done').length}</TableCell>
@@ -114,7 +114,7 @@ export function OverviewPage() {
                 ))}
               </div>
               {counts.map(c => (
-                <div key={c.s.id} className="flex h-7 items-center gap-2 text-[13px]">
+                <div key={c.s.id} className="flex h-7 items-center gap-2 text-base">
                   <StatusIcon st={c.s.id} />
                   <span className="flex-1">{c.s.name}</span>
                   <span className="text-fg-2 tabular-nums">{c.n}</span>
@@ -125,11 +125,11 @@ export function OverviewPage() {
           </Panel>
           <Panel>
             <PanelHeader title="Workload">
-              <span className="text-[11.5px] text-muted-foreground">Open tasks per person</span>
+              <span className="text-xs text-muted-foreground">Open tasks per person</span>
             </PanelHeader>
             <div className="px-3.5 pb-3.5">
               {load.map(l => (
-                <div key={l.m.id} className="relative -mx-1.5 flex h-7.5 items-center gap-2 rounded-md px-1.5 text-[13px] transition-colors hover:bg-muted">
+                <div key={l.m.id} className="relative -mx-1.5 flex h-7.5 items-center gap-2 rounded-md px-1.5 text-base transition-colors hover:bg-muted">
                   <Avatar id={l.m.id} size="sm" tip={false} />
                   <a {...linkTo({ r: 'member', id: l.m.id })} className={cn(stretched, 'w-24 truncate')}>
                     {l.m.name.split(' ')[0]}
@@ -154,7 +154,7 @@ export function OverviewPage() {
                 ms.map(m => (
                   <div
                     key={m.p.id + m.name}
-                    className="relative -mx-1.5 flex h-8 items-center gap-2 rounded-md px-1.5 text-[13px] transition-colors hover:bg-muted"
+                    className="relative -mx-1.5 flex h-8 items-center gap-2 rounded-md px-1.5 text-base transition-colors hover:bg-muted"
                   >
                     <span className="mx-0.75 size-2.25 shrink-0 rotate-45 rounded-xs bg-(--c)" style={{ '--c': pColor(m.p) }} />
                     <button className={cn(stretched, 'min-w-0 flex-1 truncate')} onClick={() => go({ r: 'project', id: m.p.id, tab: 'timeline' })}>

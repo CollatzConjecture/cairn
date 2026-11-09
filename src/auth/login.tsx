@@ -75,7 +75,7 @@ export function LoginPage() {
               </InputGroupAddon>
             </InputGroup>
           </FormField>
-          <Label className="gap-2 text-[13px] font-normal">
+          <Label className="gap-2 text-base font-normal">
             <Checkbox defaultChecked />
             Remember me for 30 days
           </Label>

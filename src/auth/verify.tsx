@@ -46,7 +46,7 @@ export function VerifyPage() {
       >
         <div className="flex items-center gap-2.5 rounded-xl border bg-card px-3.5 py-3" role="status">
           <span className="size-2 animate-pulse rounded-full bg-muted-strong" />
-          <span className="text-[13px] text-fg-2">Waiting for verification…</span>
+          <span className="text-sm text-fg-2">Waiting for verification…</span>
         </div>
         <Button size="lg" className="w-full" onClick={verified}>
           I&apos;ve verified my email

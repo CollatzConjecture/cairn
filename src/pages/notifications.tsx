@@ -68,14 +68,14 @@ export function NotificationsPage() {
                       )}
                     >
                       <NotifIcon n={n} />
-                      <div className="min-w-0 flex-1 text-[13px]">
+                      <div className="min-w-0 flex-1 text-base">
                         <button className={cn(stretched, 'block')} onClick={() => openNotif(n.id)}>
                           <NotifText d={d} n={n} />
                         </button>
                         <div className="mt-0.5 truncate text-sm text-fg-2">
                           <CommentText text={n.snippet} />
                         </div>
-                        <div className="mt-1 text-[11.5px] text-muted-foreground">{`${p ? p.name + ' · ' : ''}${ago(n.at)}`}</div>
+                        <div className="mt-1 text-xs text-muted-foreground">{`${p ? p.name + ' · ' : ''}${ago(n.at)}`}</div>
                       </div>
                       {!n.read && <span className="mt-2 size-1.75 shrink-0 rounded-full bg-primary" aria-label="Unread" />}
                       <Tip label={n.read ? 'Mark as unread' : 'Mark as read'}>

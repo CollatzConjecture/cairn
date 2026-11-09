@@ -123,7 +123,7 @@ function ProjectProgress({ ps }: { ps: readonly Project[] }) {
                 <TableCell className={tc.cell}>
                   <span className="flex items-center gap-2">
                     <ProgressBar v={pr} className={p.status === 'risk' ? barTone.red : undefined} />
-                    <span className="w-7.5 text-[11.5px] text-muted-foreground tabular-nums">{`${pr}%`}</span>
+                    <span className="w-7.5 text-xs text-muted-foreground tabular-nums">{`${pr}%`}</span>
                   </span>
                 </TableCell>
                 <TableCell className={cn(tc.cell, 'text-fg-2 tabular-nums')}>{fmtDate(p.due)}</TableCell>
@@ -172,7 +172,7 @@ function Deadlines({ open }: { open: readonly Task[] }) {
       <div className="px-3.5 pb-1.5">
         {groups.map(([lab, ts, shown]) => (
           <div key={lab} className="mb-2.5">
-            <h3 className="mb-1 flex items-center gap-2 text-[11.5px] font-semibold text-fg-2">
+            <h3 className="mb-1 flex items-center gap-2 text-xs font-semibold text-fg-2">
               {lab}
               <span className="font-medium text-muted-foreground">{ts.length}</span>
             </h3>
@@ -188,7 +188,7 @@ function Deadlines({ open }: { open: readonly Task[] }) {
                     <Avatar id={t.assignee} size="sm" className="relative z-10" />
                   </div>
                 ))}
-                {ts.length > shown.length && <div className="pl-4 text-[11.5px] text-muted-foreground">{`+${ts.length - shown.length} more`}</div>}
+                {ts.length > shown.length && <div className="pl-4 text-xs text-muted-foreground">{`+${ts.length - shown.length} more`}</div>}
               </>
             ) : (
               <div className="pt-1 pb-0.5 text-sm text-muted-foreground">Nothing due</div>

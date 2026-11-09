@@ -297,7 +297,7 @@ export function CalendarView({ tasks, viewKey, project, events = false }: { task
           </h2>
           <span className="flex-1" />
           {!project && projs.length > 1 && (
-            <span className="mr-2 flex items-center gap-2.5 text-[11.5px] text-fg-2 max-sm:hidden">
+            <span className="mr-2 flex items-center gap-2.5 text-xs text-fg-2 max-sm:hidden">
               {projs.slice(0, 5).map(p => (
                 <span key={p.id} className="flex items-center gap-1">
                   <Dot c={pColor(p)} />
