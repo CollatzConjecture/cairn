@@ -1,5 +1,4 @@
 import { Pencil, UserPlus } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MiniRow } from '../components/task-list';
@@ -7,7 +6,7 @@ import type { TeamId } from '../domain/ids';
 import { Page404 } from '../shell/errors';
 import { linkTo } from '../shell/shell';
 import { allTasks, invite, progressOf, sortTasks, teamById, useStore, visibleProjects } from '../store';
-import { Avatar, ProgressBar, ProjectIcon, ProjectStatusBadge } from '../ui/helpers';
+import { Avatar, ProgressBar, ProjectIcon, ProjectStatusBadge, Tag } from '../ui/helpers';
 import { Grid2, Page, Panel, PanelHeader, Stack, stretched } from './kit';
 import { editTeam } from './team-modal';
 import { TeamIcon } from './teams-grid';
@@ -84,9 +83,7 @@ export function TeamPage({ id }: { id: TeamId }) {
                 </a>
                 <div className="text-xs text-muted-foreground">{m.title}</div>
               </div>
-              <Badge variant="outline" className="rounded-[5px] bg-muted text-fg-2">
-                {m.role}
-              </Badge>
+              <Tag tone="muted">{m.role}</Tag>
             </div>
           ))}
         </Panel>

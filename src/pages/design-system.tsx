@@ -39,7 +39,7 @@ import {
   Star,
   Sun,
   Table2,
-  Tag,
+  Tag as TagIcon,
   Timer,
   Trash,
   TriangleAlert,
@@ -47,7 +47,6 @@ import {
   Users,
   X,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -67,7 +66,7 @@ import { memberId, taskId } from '../domain/ids';
 import { KanbanCard } from '../project/kanban-card';
 import { NavItem } from '../shell/shell';
 import { allTasks, confirm, newTask, openPalette, openTask, setTheme, taskById, toast, useStore } from '../store';
-import { Avatar, AvatarStack, Label as TaskLabel, PriorityPill, ProgressBar, ProjectStatusBadge, StatusPill, Tip } from '../ui/helpers';
+import { Avatar, AvatarStack, Label as TaskLabel, PriorityPill, ProgressBar, ProjectStatusBadge, StatusPill, Tag, Tip } from '../ui/helpers';
 import { Callout, Page, PageHeader, Panel, Seg, barTone } from './kit';
 
 function Sec({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
@@ -135,7 +134,7 @@ const ICONS = [
   Ellipsis,
   Paperclip,
   MessageSquare,
-  Tag,
+  TagIcon,
   Link,
   Copy,
   Pencil,
@@ -430,13 +429,11 @@ export function DesignSystemPage() {
               <AvatarStack ids={['m1', 'm2', 'm3', 'm4', 'm5', 'm6'].map(memberId)} max={4} size="md" />
             </Row>
             <Row lab="Badge" className="mb-0">
-              <Badge variant="outline" className="rounded-[5px] bg-muted text-fg-2">
-                Default
-              </Badge>
-              <Badge className="rounded-[5px] bg-primary-soft text-primary">Accent</Badge>
-              <Badge className="rounded-[5px] bg-green/12 text-green">Active</Badge>
-              <Badge className="rounded-[5px] bg-amber/12 text-amber">Invited</Badge>
-              <Badge className="rounded-[5px] bg-red/12 text-red">3 overdue</Badge>
+              <Tag tone="muted">Default</Tag>
+              <Tag tone="primary">Accent</Tag>
+              <Tag tone="green">Active</Tag>
+              <Tag tone="amber">Invited</Tag>
+              <Tag tone="red">3 overdue</Tag>
               <ProjectStatusBadge s="active" />
               <ProjectStatusBadge s="risk" />
             </Row>

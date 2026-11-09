@@ -1,5 +1,5 @@
 /* Small render helpers shared across the app, on shadcn primitives and theme tokens. */
-import { Fragment, type CSSProperties, type ReactNode } from 'react';
+import { Fragment, type ComponentProps, type CSSProperties, type ReactNode } from 'react';
 import { FolderArchive, User } from 'lucide-react';
 import { Avatar as AvatarRoot } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -180,6 +180,17 @@ export const ProjectIcon = ({ p, className }: { p: Pick<Project, 'icon' | 'color
   <span className={cn('grid size-7 shrink-0 place-items-center rounded-md bg-(--c)/16 text-tint [&_svg]:size-[55%]', className)} style={{ '--c': pColor(p) }}>
     <Icon name={p.icon} />
   </span>
+);
+const TAG = {
+  muted: 'border-border bg-muted text-fg-2',
+  primary: 'bg-primary-soft text-primary',
+  green: 'bg-green/12 text-green',
+  amber: 'bg-amber/12 text-amber',
+  red: 'bg-red/12 text-red',
+};
+/** A short status label on a tint of its tone, like Invited or This device. */
+export const Tag = ({ tone, className, ...props }: ComponentProps<typeof Badge> & { tone: keyof typeof TAG }) => (
+  <Badge className={cn('rounded-[5px]', TAG[tone], className)} {...props} />
 );
 export const ProjectStatusBadge = ({ s }: { s: ProjectStatus }) => (
   <Badge variant="outline" className="h-5 gap-1.25 rounded-[5px] bg-background px-1.75 text-fg-2">

@@ -1,7 +1,6 @@
 /* Settings sections with forms and account state. */
 import { useState } from 'react';
 import { Check, CircleCheck, CreditCard, Monitor, ShieldAlert, ShieldCheck, Smartphone } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
@@ -13,7 +12,7 @@ import { dOff, fmtDate } from '../domain/date';
 import { seed } from '../domain/seed';
 import { linkTo } from '../shell/shell';
 import { confirm, get, go, me, mutate, set, toast, useStore } from '../store';
-import { Avatar } from '../ui/helpers';
+import { Avatar, Tag } from '../ui/helpers';
 import { WsLogo } from '../ui/brand';
 import { Callout, Panel, Swatches, Eyebrow, tc } from '../pages/kit';
 import { FormField, SBlock, SRow, field, invalid, useBusy } from './parts';
@@ -267,7 +266,7 @@ export function Sessions() {
               <span className="flex items-center gap-2">
                 <I className="size-3.75" />
                 {x.dev}
-                {x.cur && <Badge className="rounded-[5px] bg-green/12 text-green">This device</Badge>}
+                {x.cur && <Tag tone="green">This device</Tag>}
               </span>
             }
             desc={`${x.loc} · ${x.at}`}
@@ -479,7 +478,7 @@ export function Plan() {
             >
               <div className="flex items-center gap-2">
                 <b className="font-semibold">{n}</b>
-                {on && <Badge className="rounded-[5px] bg-primary-soft text-primary">Current</Badge>}
+                {on && <Tag tone="primary">Current</Tag>}
               </div>
               <div className="text-[22px] font-semibold tracking-[-0.02em]">
                 {`$${PRICE[n]}`}
@@ -564,10 +563,10 @@ export function Invoices() {
               <TableCell className={cn(tc.cell, 'tabular-nums')}>{fmtDate(i.date, true)}</TableCell>
               <TableCell className={cn(tc.cell, 'tabular-nums')}>{i.amt}</TableCell>
               <TableCell className={tc.cell}>
-                <Badge className="rounded-[5px] bg-green/12 text-green">
+                <Tag tone="green">
                   <Check />
                   {i.st}
-                </Badge>
+                </Tag>
               </TableCell>
             </TableRow>
           ))}

@@ -1,6 +1,5 @@
 import { useRef, type ReactNode } from 'react';
 import { History, Search, SearchX } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 import { cn } from '@/lib/utils';
@@ -8,7 +7,7 @@ import { FT } from '../domain/constants';
 import { ago } from '../domain/date';
 import { linkTo } from '../shell/shell';
 import { go, memberById, openTask, pColor, projectById, searchAll, set, setUi, taskById, useStore, type SearchScope } from '../store';
-import { Avatar, Dot, Empty, Highlight, ProjectIcon, ProjectStatusBadge, StatusIcon } from '../ui/helpers';
+import { Avatar, Dot, Empty, Highlight, ProjectIcon, ProjectStatusBadge, StatusIcon, Tag } from '../ui/helpers';
 import { Icon } from '../ui/icon';
 import { Eyebrow, LineTabs, Page, Panel, stretched } from './kit';
 
@@ -73,10 +72,10 @@ export function SearchPage() {
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-sm text-muted-foreground">Recent:</span>
           {d.recentSearches.map(s => (
-            <Badge key={s} variant="outline" className="h-5 rounded-[5px] bg-muted text-fg-2 hover:bg-muted-strong" render={<button onClick={() => pick(s)} />}>
+            <Tag key={s} tone="muted" className="hover:bg-muted-strong" render={<button onClick={() => pick(s)} />}>
               <History />
               {s}
-            </Badge>
+            </Tag>
           ))}
         </div>
       ) : total ? (

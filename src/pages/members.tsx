@@ -1,5 +1,4 @@
 import { ChevronDown, Crown, Ellipsis, Plus, SearchX, UserPlus } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
@@ -8,7 +7,7 @@ import { ago, minsAgo } from '../domain/date';
 import type { Member } from '../domain/schema';
 import { linkTo } from '../shell/shell';
 import { allTasks, invite, me, newTeam, set, setUi, teamOrNone, useStore, visibleProjects } from '../store';
-import { Avatar, Empty } from '../ui/helpers';
+import { Avatar, Empty, Tag } from '../ui/helpers';
 import { Icon } from '../ui/icon';
 import { LineTabs, Page, PageHeader, Panel, SearchField, Seg, stretched, tc } from './kit';
 import { MemberContextMenu, MemberMenu, RolePicker, setRole } from './menus';
@@ -35,19 +34,17 @@ export function RoleCell({ m, canEdit }: { m: Member; canEdit: boolean }) {
 
 export const MemberStatus = ({ m }: { m: Member }) =>
   m.status === 'invited' ? (
-    <Badge className="rounded-[5px] bg-amber/12 text-amber">
+    <Tag tone="amber">
       <span className="size-1.5 rounded-full bg-current" />
       Invited
-    </Badge>
+    </Tag>
   ) : m.status === 'deactivated' ? (
-    <Badge variant="outline" className="rounded-[5px] bg-muted text-fg-2">
-      Deactivated
-    </Badge>
+    <Tag tone="muted">Deactivated</Tag>
   ) : (
-    <Badge className="rounded-[5px] bg-green/12 text-green">
+    <Tag tone="green">
       <span className="size-1.5 rounded-full bg-current" />
       Active
-    </Badge>
+    </Tag>
   );
 
 function Directory() {

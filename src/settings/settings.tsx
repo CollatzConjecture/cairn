@@ -31,7 +31,6 @@ import {
   Moon,
   Sun,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Kbd } from '@/components/ui/kbd';
 import { cn } from '@/lib/utils';
@@ -45,7 +44,7 @@ import { TeamsGrid } from '../pages/teams-grid';
 import { Page404 } from '../shell/errors';
 import { linkTo } from '../shell/shell';
 import { delProject, invite, restoreProject, set, setTheme, toast, useStore } from '../store';
-import { Avatar, ProjectIcon } from '../ui/helpers';
+import { Avatar, ProjectIcon, Tag } from '../ui/helpers';
 import { Panel, Seg, SelectField, Swatches, type Option } from '../pages/kit';
 import { Invoices, Payment, Plan, Password, Profile, Sessions, TwoFactor, Workspace } from './account';
 import { SBlock, SRow, SectionHead, ToggleRow } from './parts';
@@ -348,7 +347,7 @@ function Members() {
               <div className="truncate font-medium">{m.name}</div>
               <div className="truncate text-xs text-muted-foreground">{m.email}</div>
             </div>
-            {m.status === 'invited' && <Badge className="rounded-[5px] bg-amber/12 text-amber">Invited</Badge>}
+            {m.status === 'invited' && <Tag tone="amber">Invited</Tag>}
             <RoleCell m={m} canEdit />
             <MemberMenu id={m.id}>
               <Button variant="ghost" size="icon-sm" aria-label={`Options for ${m.name}`}>

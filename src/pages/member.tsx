@@ -1,5 +1,4 @@
 import { Clock, Copy, Crown, Ellipsis, ListChecks, Mail, MapPin, Plus } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ActivityItem, MiniRow } from '../components/task-list';
@@ -8,7 +7,7 @@ import type { MemberId } from '../domain/ids';
 import { Page404 } from '../shell/errors';
 import { linkTo } from '../shell/shell';
 import { allTasks, canSee, copy, isOver, memberById, newTask, setUi, sortTasks, teamOrNone, useStore, visibleProjects } from '../store';
-import { Avatar, Empty, ProjectIcon } from '../ui/helpers';
+import { Avatar, Empty, ProjectIcon, Tag } from '../ui/helpers';
 import { Feed, Grid2, LineTabs, Page, Panel, PanelHeader, Stack, Stat, Stats, stretched } from './kit';
 import { MemberMenu } from './menus';
 
@@ -32,11 +31,11 @@ export function MemberPage({ id }: { id: MemberId }) {
         <div className="min-w-55 flex-1">
           <div className="flex flex-wrap items-center gap-2.5">
             <h1 className="text-2xl leading-[1.45] font-semibold tracking-[-0.02em]">{m.name}</h1>
-            <Badge variant="outline" className="rounded-[5px] bg-muted text-fg-2">
+            <Tag tone="muted">
               {m.role === 'Owner' && <Crown />}
               {m.role}
-            </Badge>
-            {m.status === 'invited' && <Badge className="rounded-[5px] bg-amber/12 text-amber">Invite pending</Badge>}
+            </Tag>
+            {m.status === 'invited' && <Tag tone="amber">Invite pending</Tag>}
           </div>
           <div className="mt-0.75 text-fg-2">{`${m.title} · ${teamOrNone(d, m.team).name}`}</div>
           <div className="mt-2 flex flex-wrap gap-3.5 text-sm text-muted-foreground [&_svg]:size-3.25">

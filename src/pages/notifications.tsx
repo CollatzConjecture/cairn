@@ -1,11 +1,10 @@
 import { BellOff, Check, CheckCheck, Mail, Settings2 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ago, dayBucket } from '../domain/date';
 import { linkTo } from '../shell/shell';
 import { setUi, useStore } from '../store';
-import { CommentText, Empty, Tip } from '../ui/helpers';
+import { CommentText, Empty, Tag, Tip } from '../ui/helpers';
 import { DayHeading, Page, PageHeader, Panel, Seg, groupBy, stretched } from './kit';
 import { NotifIcon, NotifText, markAllRead, notifSubject, openNotif, toggleRead } from './notifs';
 
@@ -22,7 +21,7 @@ export function NotificationsPage() {
         title={
           <span className="flex items-center gap-2.5">
             Notifications
-            {!!unread && <Badge className="rounded-[5px] bg-primary-soft text-primary">{`${unread} unread`}</Badge>}
+            {!!unread && <Tag tone="primary">{`${unread} unread`}</Tag>}
           </span>
         }
         sub="Updates on tasks and projects you follow."
