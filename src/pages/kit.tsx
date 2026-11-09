@@ -1,5 +1,5 @@
 /* Page building blocks shared by the workspace pages and settings. */
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { Check, Search } from 'lucide-react';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -7,8 +7,8 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
 /** The centred content column. Pass a `max-w-*` to narrow or widen it. */
-export const Page = ({ className, children }: { className?: string; children: ReactNode }) => (
-  <div className={cn('mx-auto max-w-290 px-(--gutter) pt-7 pb-18 max-md:pt-5 max-md:pb-24', className)}>{children}</div>
+export const Page = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={cn('mx-auto max-w-290 px-(--gutter) pt-7 pb-18 max-md:pt-5 max-md:pb-24', className)} {...props} />
 );
 
 /** Page title, a line under it, and actions on the right (full width below 640px). */

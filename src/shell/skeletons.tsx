@@ -1,6 +1,7 @@
 /* Loading placeholders, on the shadcn Skeleton. */
 import { Skeleton as Sk } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { Page } from '../pages/kit';
 import { useRoute } from '../store';
 
 /** Placeholder list rows. */
@@ -55,7 +56,6 @@ function SkBoard() {
     </div>
   );
 }
-const pageCls = 'mx-auto max-w-290 px-(--gutter) pt-7 pb-18';
 /** The placeholder for the current page while `ui.loading` is set. */
 export function Skeleton() {
   const r = useRoute();
@@ -111,12 +111,12 @@ export function Skeleton() {
     );
   else body = <SkRows n={10} />;
   return (
-    <div className={pageCls} aria-busy="true" aria-label="Loading">
+    <Page aria-busy="true" aria-label="Loading">
       <div className="mb-5 flex flex-col gap-2">
         <Sk className="h-5 w-55" />
         <Sk className="h-2.75 w-80" />
       </div>
       {body}
-    </div>
+    </Page>
   );
 }
