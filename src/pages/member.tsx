@@ -30,7 +30,7 @@ export function MemberPage({ id }: { id: MemberId }) {
         <Avatar id={m.id} size="xl" tip={false} presence={online} />
         <div className="min-w-55 flex-1">
           <div className="flex flex-wrap items-center gap-2.5">
-            <h1 className="text-2xl leading-[1.45] font-semibold tracking-[-0.02em]">{m.name}</h1>
+            <h1 className="text-2xl leading-[1.45] font-semibold">{m.name}</h1>
             <Tag tone="muted">
               {m.role === 'Owner' && <Crown />}
               {m.role}

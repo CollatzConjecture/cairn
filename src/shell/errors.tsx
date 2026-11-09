@@ -26,7 +26,7 @@ function FullState({
       <div className="flex max-w-105 flex-col items-center gap-2 text-center">
         <G className={cn('mb-1 size-5.5', error ? 'text-red' : 'text-fg-4')} aria-hidden="true" />
         {code && <span className="font-mono text-xs tracking-[0.08em] text-muted-foreground">{code}</span>}
-        <h1 className="text-xl font-semibold tracking-[-0.015em]">{title}</h1>
+        <h1 className="text-xl font-semibold">{title}</h1>
         <p className="mb-3 text-fg-2">{children}</p>
         <div className="flex items-center gap-2">{actions}</div>
       </div>

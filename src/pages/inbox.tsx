@@ -134,7 +134,7 @@ function Preview({ d, n }: { d: Data; n: Notif }) {
         </Button>
       </div>
       <div className="w-full max-w-180 px-7 py-6 max-sm:px-4">
-        <h2 className="mb-2.5 text-xl font-semibold tracking-[-0.015em]">{t.title}</h2>
+        <h2 className="mb-2.5 text-xl font-semibold">{t.title}</h2>
         <div className="mb-4.5 flex flex-wrap gap-1">
           <CellStatus t={t} />
           <CellAssignee t={t} />
@@ -162,7 +162,7 @@ export function InboxPage() {
     <div className="grid h-full min-h-0 grid-cols-[minmax(0,420px)_minmax(0,1fr)] max-md:grid-cols-1">
       <div className="flex min-h-0 flex-col border-r max-md:border-r-0">
         <div className="flex items-center gap-2 px-(--gutter) pt-4.5">
-          <h1 className="text-xl font-semibold tracking-[-0.015em]">Inbox</h1>
+          <h1 className="text-xl font-semibold">Inbox</h1>
           <Label className="ml-auto gap-1.5 text-xs font-normal text-fg-2">
             <Switch
               checked={unreadOnly}

@@ -223,7 +223,7 @@ export function SubtaskView({ t, s }: { t: Task; s: Subtask }) {
           key={s.id}
           autoFocus
           className={cn(
-            '-mx-1.5 field-sizing-content w-full resize-none rounded-sm px-1.5 py-1 text-xl leading-[1.3] font-semibold tracking-[-0.018em] outline-none hover:bg-muted focus:bg-muted focus:ring-1 focus:ring-input',
+            '-mx-1.5 field-sizing-content w-full resize-none rounded-sm px-1.5 py-1 text-xl leading-[1.3] font-semibold outline-none hover:bg-muted focus:bg-muted focus:ring-1 focus:ring-input',
             s.done && 'text-muted-foreground line-through',
           )}
           rows={1}

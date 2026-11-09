@@ -104,7 +104,7 @@ const TOKENS: [string, string][] = [
   ['Red', 'red'],
 ];
 const TYPE: [string, string, string][] = [
-  ['Page title', 'text-2xl font-semibold tracking-[-0.022em]', 'Website Redesign'],
+  ['Page title', 'text-2xl font-semibold', 'Website Redesign'],
   ['Section title', 'text-xl font-semibold', 'Upcoming deadlines'],
   ['Subsection', 'text-md font-semibold', 'Subtasks'],
   ['Body', 'text-base', 'Low-fidelity wireframes for the new homepage.'],

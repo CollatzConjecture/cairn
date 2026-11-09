@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 /** The section title and its one-line lead. */
 export const SectionHead = ({ title, lead }: { title: string; lead: ReactNode }) => (
   <>
-    <h1 className="mb-1 text-xl font-semibold tracking-[-0.015em]">{title}</h1>
+    <h1 className="mb-1 text-xl font-semibold">{title}</h1>
     <p className="mb-6 text-fg-2">{lead}</p>
   </>
 );

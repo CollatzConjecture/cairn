@@ -45,7 +45,7 @@ function Header({ p, tab, views }: { p: Project; tab: ProjectTab; views: readonl
     <div className="flex shrink-0 flex-col gap-3 px-(--gutter) pt-5 max-md:pt-4">
       <div className="flex flex-wrap items-center gap-3">
         <ProjectIcon p={p} className="size-9 rounded-[9px]" />
-        <h1 className="text-xl font-semibold tracking-[-0.018em]">{p.name}</h1>
+        <h1 className="text-xl font-semibold">{p.name}</h1>
         <Tip label={p.fav ? 'Remove from favorites' : 'Add to favorites'}>
           <Button
             variant="ghost"

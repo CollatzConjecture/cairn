@@ -65,8 +65,10 @@
   --text-lg--line-height: 1.4;
   --text-xl: 19px;
   --text-xl--line-height: 1.45;
+  --text-xl--letter-spacing: -0.015em;
   --text-2xl: 23px;
   --text-2xl--line-height: 1.2;
+  --text-2xl--letter-spacing: -0.022em;
 
   /* The sidebar goes off-canvas below 900px. */
   --breakpoint-md: 900px;

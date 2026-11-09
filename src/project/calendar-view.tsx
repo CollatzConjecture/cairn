@@ -191,7 +191,7 @@ function WeekDay({ d, items, project }: { d: Date; items: Item[]; project?: Proj
   return (
     <div className="flex min-w-0 flex-col border-r border-divider last:border-r-0 max-sm:border-r-0 max-sm:border-b max-sm:border-b-border">
       <div className="flex items-baseline gap-1.5 border-b p-2.5">
-        <span className={cn('text-xl font-semibold tracking-[-0.02em] tabular-nums', today && 'text-primary')} aria-current={today ? 'date' : undefined}>
+        <span className={cn('text-xl font-semibold tabular-nums', today && 'text-primary')} aria-current={today ? 'date' : undefined}>
           {d.getDate()}
         </span>
         <span className="text-xs text-fg-2">{WD[d.getDay()]}</span>

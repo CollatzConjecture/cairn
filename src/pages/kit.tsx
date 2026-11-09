@@ -19,7 +19,7 @@ export function PageHeader({ title, sub, children, className }: { title: ReactNo
   return (
     <div className={cn('mb-5 flex flex-wrap items-start gap-3', className)}>
       <div className="min-w-0">
-        <h1 className="text-2xl leading-[1.2] font-semibold tracking-[-0.022em] text-balance max-sm:text-xl">{title}</h1>
+        <h1 className="text-2xl leading-[1.2] font-semibold text-balance max-sm:text-xl">{title}</h1>
         {sub && <p className="mt-1 text-fg-2">{sub}</p>}
       </div>
       {children && <div className="ml-auto flex flex-wrap items-center gap-1.5 max-sm:ml-0 max-sm:w-full">{children}</div>}

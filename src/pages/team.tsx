@@ -27,7 +27,7 @@ export function TeamPage({ id }: { id: TeamId }) {
         <div className="flex items-center gap-3">
           <TeamIcon t={t} className="size-9" />
           <div>
-            <h1 className="text-2xl leading-[1.2] font-semibold tracking-[-0.022em] max-sm:text-xl">{t.name}</h1>
+            <h1 className="text-2xl leading-[1.2] font-semibold max-sm:text-xl">{t.name}</h1>
             <p className="mt-0.5 text-fg-2">{t.desc}</p>
           </div>
         </div>

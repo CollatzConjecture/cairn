@@ -114,7 +114,7 @@ Style with Tailwind utilities on shadcn components. Do not add CSS files. `src/i
 
 `primary` is the brand accent. shadcn's `accent` is a neutral hover fill, not the brand colour.
 
-The type scale is `text-2xs` (11px), `text-xs` (12px), `text-sm` (12.5px, controls), `text-base` (13.5px, body, rows and menus), `text-md` (14.5px), `text-lg` (16px), `text-xl` (19px), and `text-2xl` (23px).
+The type scale is `text-2xs` (11px), `text-xs` (12px), `text-sm` (12.5px, controls), `text-base` (13.5px, body, rows and menus), `text-md` (14.5px), `text-lg` (16px), `text-xl` (19px), and `text-2xl` (23px). `text-xl` and `text-2xl` carry their own letter-spacing (-0.015em and -0.022em), so headings need no `tracking-*`.
 
 The radii are `rounded-sm` (4px), `rounded-md` (6px, controls), `rounded-lg` (8px), and `rounded-xl` (10px, cards, menus and dialogs). The shadows are `shadow-xs` (outline buttons), `shadow-card` (cards), `shadow-md` (menus and toasts), and `shadow-drag` (a dragged card).
 

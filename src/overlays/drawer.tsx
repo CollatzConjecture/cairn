@@ -427,7 +427,7 @@ function TitleEdit({ t }: { t: Task }) {
   return (
     <textarea
       key={t.id + t.title}
-      className="-mx-1.5 field-sizing-content w-[calc(100%+12px)] resize-none rounded-sm px-1.5 py-1 text-xl leading-[1.3] font-semibold tracking-[-0.018em] outline-none hover:bg-muted focus:bg-muted focus:ring-1 focus:ring-input"
+      className="-mx-1.5 field-sizing-content w-[calc(100%+12px)] resize-none rounded-sm px-1.5 py-1 text-xl leading-[1.3] font-semibold outline-none hover:bg-muted focus:bg-muted focus:ring-1 focus:ring-input"
       rows={1}
       aria-label="Task title"
       defaultValue={t.title}

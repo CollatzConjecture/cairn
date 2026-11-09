@@ -164,7 +164,7 @@ function Nav({ step, label = 'Continue', skip = false }: { step: number; label?:
 }
 const Head = ({ title, sub }: { title: string; sub: string }) => (
   <>
-    <h1 className="text-center text-2xl font-semibold tracking-[-0.022em]">{title}</h1>
+    <h1 className="text-center text-2xl font-semibold">{title}</h1>
     <p className="-mt-2 mb-1 text-center text-fg-2">{sub}</p>
   </>
 );
