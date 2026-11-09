@@ -175,7 +175,7 @@ function SidebarProject({ p }: { p: Project }) {
         <SidebarMenuButton
           isActive={on}
           tooltip={p.name}
-          className="group-has-data-[sidebar=menu-action]/menu-item:pr-2 group-has-data-[sidebar=menu-action]/menu-item:group-hover/menu-item:pr-14 group-has-data-[sidebar=menu-action]/menu-item:group-focus-within/menu-item:pr-14 group-has-data-[sidebar=menu-action]/menu-item:group-has-aria-expanded/menu-item:pr-14 max-md:group-has-data-[sidebar=menu-action]/menu-item:pr-14"
+          className="group-has-data-[sidebar=menu-action]/menu-item:pr-2 group-has-data-[sidebar=menu-action]/menu-item:group-focus-within/menu-item:pr-14 group-has-data-[sidebar=menu-action]/menu-item:group-hover/menu-item:pr-14 group-has-data-[sidebar=menu-action]/menu-item:group-has-aria-expanded/menu-item:pr-14 max-md:group-has-data-[sidebar=menu-action]/menu-item:pr-14"
           render={<a {...linkTo({ r: 'project', id: p.id })} draggable data-drag-proj={p.id} aria-current={on ? 'page' : undefined} />}
         >
           <span className="grid size-4.5 shrink-0 place-items-center rounded-[5px] bg-(--c)/16 text-tint [&_svg]:size-3!" style={{ '--c': pColor(p) }}>
@@ -185,7 +185,7 @@ function SidebarProject({ p }: { p: Project }) {
           {p.fav && <Star className="ml-1 size-2.75! text-amber" aria-label="Favorite" />}
           {p.private && <Lock className="ml-1 size-2.75! text-muted-foreground" aria-label="Private" />}
           <span
-            className="ml-auto size-1.5 shrink-0 rounded-full bg-(--c) group-hover/menu-item:hidden group-focus-within/menu-item:hidden group-has-aria-expanded/menu-item:hidden group-data-[collapsible=icon]:hidden max-md:hidden"
+            className="ml-auto size-1.5 shrink-0 rounded-full bg-(--c) group-focus-within/menu-item:hidden group-hover/menu-item:hidden group-has-aria-expanded/menu-item:hidden group-data-[collapsible=icon]:hidden max-md:hidden"
             style={{ '--c': PSTAT[p.status].c }}
             title={PSTAT[p.status].name}
           />
@@ -418,7 +418,7 @@ function Topbar() {
       <Crumbs />
       <span className="flex-1" />
       <button
-        className="relative flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pointer-coarse:after:absolute pointer-coarse:after:inset-[min(0px,calc(50%-22px))] pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-[0.97] max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2"
+        className="relative flex h-6.5 w-55 items-center gap-2 rounded-md border bg-sunken pr-1.5 pl-2.25 text-sm text-muted-foreground transition-colors hover:border-input hover:text-fg-2 active:scale-[0.97] max-[1100px]:w-auto max-[1100px]:border-transparent max-[1100px]:bg-transparent max-[1100px]:px-2 pointer-coarse:after:absolute pointer-coarse:after:inset-[min(0px,calc(50%-22px))]"
         onClick={openPalette}
         aria-label="Search and commands"
       >

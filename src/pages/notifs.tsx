@@ -36,7 +36,7 @@ export function NotifIcon({ n }: { n: Notif }) {
   const I = n.type === 'update' && n.project ? TriangleAlert : Clock;
   return (
     <span
-      className="avatar-tint mt-px grid size-6.5 shrink-0 place-items-center rounded-full ring-[1.5px] ring-background"
+      className="mt-px grid size-6.5 shrink-0 place-items-center rounded-full avatar-tint ring-[1.5px] ring-background"
       style={{ '--c': n.project ? 'var(--red)' : 'var(--amber)' }}
     >
       <I className="size-3.25" />

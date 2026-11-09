@@ -473,7 +473,7 @@ export function BulkBar({ ids }: { ids: readonly Task['id'][] }) {
   const sep = <span className="mx-1 h-4.5 w-px bg-background/20" />;
   return (
     <div
-      className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1 rounded-xl bg-foreground py-1.5 pr-1.5 pl-3.5 text-sm text-background shadow-md animate-in fade-in slide-in-from-bottom-2 duration-200"
+      className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 animate-in items-center gap-1 rounded-xl bg-foreground py-1.5 pr-1.5 pl-3.5 text-sm text-background shadow-md duration-200 fade-in slide-in-from-bottom-2"
       role="toolbar"
       aria-label="Bulk actions"
     >

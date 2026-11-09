@@ -359,7 +359,7 @@ export function PaletteLayer() {
       onOpenChange={open => !open && closePalette()}
       title="Command menu"
       description="Run a command, search the workspace, or switch workspace."
-      className="top-[12vh] flex max-h-[70vh] flex-col gap-0 sm:max-w-160 max-sm:top-2"
+      className="top-[12vh] flex max-h-[70vh] flex-col gap-0 max-sm:top-2 sm:max-w-160"
     >
       <PaletteBox pl={pl} />
     </CommandDialog>

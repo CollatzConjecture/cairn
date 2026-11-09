@@ -40,7 +40,7 @@ function SkBoard() {
         <div key={c} className="flex w-68 shrink-0 flex-col gap-2">
           <Sk className="my-2 h-2.75 w-20" />
           {Array.from({ length: n }, (_, i) => (
-            <div key={i} className={cn(card, 'gap-2.5 p-card')}>
+            <div key={i} className={cn(card, 'p-card gap-2.5')}>
               <Sk className="h-3.5 w-2/5" />
               <Sk className="h-2.5" style={{ width: ((60 + i * 9) % 95) + '%' }} />
               <div className="flex items-center gap-2">

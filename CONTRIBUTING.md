@@ -89,6 +89,7 @@ Style with Tailwind utilities on shadcn components. Do not add CSS files. `src/i
 - A colour that comes from data (a project's, member's, or label's colour) goes in the `--c` custom property. Read it with `bg-(--c)`, `bg-(--c)/16`, `text-(--c)`, `text-tint`, or `avatar-tint`.
 - Combine classes with `cn()` from `@/lib/utils`: `cn('h-8 px-2', on && 'bg-muted')`.
 - Use `cva` only for a reusable component with real variants, like `buttonVariants`. A one-off condition is `cn()`.
+- Prettier sorts the classes in `className`, `cn()` and `cva()` (`prettier-plugin-tailwindcss`). Run `pnpm run format` instead of ordering them by hand.
 
 ### Theme tokens
 

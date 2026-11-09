@@ -91,7 +91,7 @@ function Header({ p, tab, views }: { p: Project; tab: ProjectTab; views: readonl
           </ProjectMenu>
         </div>
       </div>
-      <nav className="-mx-(--gutter) flex gap-0.5 overflow-x-auto border-b px-[calc(var(--gutter)-10px)] [scrollbar-width:none]" aria-label="Project views">
+      <nav className="-mx-(--gutter) flex [scrollbar-width:none] gap-0.5 overflow-x-auto border-b px-[calc(var(--gutter)-10px)]" aria-label="Project views">
         {PTABS.map(([k, n, i]) => (
           <a key={k} className={tabCls} {...linkTo({ r: 'project', id: p.id, tab: k })} aria-current={tab === k ? 'page' : undefined}>
             <Icon name={i} />

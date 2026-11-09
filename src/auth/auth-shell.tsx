@@ -57,7 +57,7 @@ export function AuthCard({
   className?: string;
 }) {
   return (
-    <div className={cn('flex w-full max-w-95 flex-col gap-4 animate-in fade-in slide-in-from-bottom-2 duration-250', className)}>
+    <div className={cn('flex w-full max-w-95 animate-in flex-col gap-4 duration-250 fade-in slide-in-from-bottom-2', className)}>
       <div className="flex justify-center">{glyph ?? <Logo h={30} />}</div>
       <h1 className="text-center text-2xl font-semibold tracking-[-0.022em]">{title}</h1>
       {sub && <p className="-mt-2 mb-1 text-center text-fg-2">{sub}</p>}

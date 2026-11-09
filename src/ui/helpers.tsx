@@ -84,7 +84,7 @@ export function AvatarStack({ ids, max = 4, size = 'sm' }: { ids: readonly Membe
       ))}
       {ids.length > max && (
         <span
-          className={cn('avatar-tint inline-grid shrink-0 place-items-center rounded-full font-semibold ring-[1.5px] ring-background', AV_SIZE[size])}
+          className={cn('inline-grid shrink-0 place-items-center rounded-full avatar-tint font-semibold ring-[1.5px] ring-background', AV_SIZE[size])}
           style={{ '--c': 'var(--gray)' }}
         >{`+${ids.length - max}`}</span>
       )}

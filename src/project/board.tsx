@@ -175,7 +175,7 @@ function Column({
           </ColumnMenu>
         </span>
       </div>
-      <div className="flex min-h-15 flex-1 flex-col gap-1.5 overflow-y-auto px-2 pt-1 pb-2 [scrollbar-width:none]">
+      <div className="flex min-h-15 flex-1 [scrollbar-width:none] flex-col gap-1.5 overflow-y-auto px-2 pt-1 pb-2">
         <SortableContext id={st} items={[...ids]} strategy={verticalListSortingStrategy}>
           {ids.map(id => {
             const t = tasks.get(id);

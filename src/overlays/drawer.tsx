@@ -147,7 +147,7 @@ function Description({ t }: { t: Task }) {
       <div
         ref={ed}
         id="d-desc"
-        className="min-h-16 rounded-md border border-transparent px-2.5 py-2 text-base leading-[1.6] transition-colors outline-none group-hover/desc:border-border focus:border-input empty:before:text-muted-foreground empty:before:content-[attr(data-ph)] max-sm:border-border [&_a]:text-primary [&_a]:underline [&_h4]:mt-2.5 [&_h4]:mb-1 [&_h4]:text-md [&_h4]:font-semibold [&_ol]:my-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-1.5 [&_ul]:my-1 [&_ul]:list-disc [&_ul]:pl-5"
+        className="min-h-16 rounded-md border border-transparent px-2.5 py-2 text-base leading-[1.6] transition-colors outline-none group-hover/desc:border-border empty:before:text-muted-foreground empty:before:content-[attr(data-ph)] focus:border-input max-sm:border-border [&_a]:text-primary [&_a]:underline [&_h4]:mt-2.5 [&_h4]:mb-1 [&_h4]:text-md [&_h4]:font-semibold [&_ol]:my-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-1.5 [&_ul]:my-1 [&_ul]:list-disc [&_ul]:pl-5"
         contentEditable
         role="textbox"
         aria-multiline="true"
@@ -558,8 +558,8 @@ export function DrawerLayer() {
         className={cn(
           'gap-0 p-0 outline-none data-[side=right]:w-[min(620px,100vw)] data-[side=right]:sm:max-w-none',
           full &&
-            'data-[side=right]:inset-y-6 data-[side=right]:left-0 mx-auto rounded-xl border data-[side=right]:h-auto data-[side=right]:w-[min(980px,calc(100vw-48px))] data-[side=right]:data-ending-style:translate-x-0 data-[side=right]:data-starting-style:translate-x-0',
-          'max-sm:data-[side=right]:inset-0 max-sm:data-[side=right]:h-full max-sm:data-[side=right]:w-full max-sm:rounded-none max-sm:border-0',
+            'mx-auto rounded-xl border data-[side=right]:inset-y-6 data-[side=right]:left-0 data-[side=right]:h-auto data-[side=right]:w-[min(980px,calc(100vw-48px))] data-[side=right]:data-ending-style:translate-x-0 data-[side=right]:data-starting-style:translate-x-0',
+          'max-sm:rounded-none max-sm:border-0 max-sm:data-[side=right]:inset-0 max-sm:data-[side=right]:h-full max-sm:data-[side=right]:w-full',
         )}
         onDragOver={e => {
           if (e.dataTransfer.types.includes('Files')) e.preventDefault();

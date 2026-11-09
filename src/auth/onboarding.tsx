@@ -408,7 +408,7 @@ export function OnboardingPage({ step }: { step: number }) {
       <div
         key={step}
         className={cn(
-          'flex w-full flex-col gap-4 animate-in fade-in duration-250',
+          'flex w-full animate-in flex-col gap-4 duration-250 fade-in',
           dir > 0 ? 'slide-in-from-right-6' : 'slide-in-from-left-6',
           step === 5 ? 'max-w-110' : 'max-w-140',
         )}

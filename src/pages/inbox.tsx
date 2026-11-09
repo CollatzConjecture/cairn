@@ -192,7 +192,7 @@ export function InboxPage() {
           listClassName="gap-4"
           itemClassName="px-0 group-data-horizontal/tabs:after:inset-x-0"
         />
-        <div className="min-h-0 flex-1 overflow-y-auto [scrollbar-width:none]">
+        <div className="min-h-0 flex-1 [scrollbar-width:none] overflow-y-auto">
           {ns.length ? (
             <ul aria-label="Notifications">
               {ns.map(n => (

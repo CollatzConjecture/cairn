@@ -28,7 +28,7 @@ export function PageHeader({ title, sub, children, className }: { title: ReactNo
 export const Stats = ({ className, children }: { className?: string; children: ReactNode }) => (
   <div
     className={cn(
-      'grid grid-cols-4 overflow-hidden rounded-xl border max-md:grid-cols-2 *:not-first:border-l max-md:*:nth-3:border-l-0 max-md:*:nth-[n+3]:border-t',
+      'grid grid-cols-4 overflow-hidden rounded-xl border *:not-first:border-l max-md:grid-cols-2 max-md:*:nth-3:border-l-0 max-md:*:nth-[n+3]:border-t',
       className,
     )}
   >
@@ -201,7 +201,7 @@ export function LineTabs<V extends string>({
       <TabsList
         variant="line"
         aria-label={label}
-        className={cn('-mb-px h-9! w-full justify-start gap-0.5 overflow-x-auto rounded-none p-0 [scrollbar-width:none]', listClassName)}
+        className={cn('-mb-px h-9! w-full [scrollbar-width:none] justify-start gap-0.5 overflow-x-auto rounded-none p-0', listClassName)}
       >
         {items.map(i => (
           <TabsTrigger
@@ -209,7 +209,7 @@ export function LineTabs<V extends string>({
             value={i.value}
             aria-label={i.aria}
             className={cn(
-              'h-full flex-none gap-1.5 rounded-none border-0 px-2.5 text-sm text-fg-2 hover:text-foreground data-active:text-foreground group-data-horizontal/tabs:after:inset-x-2 group-data-horizontal/tabs:after:bottom-0 group-data-horizontal/tabs:after:rounded-[2px]',
+              'h-full flex-none gap-1.5 rounded-none border-0 px-2.5 text-sm text-fg-2 group-data-horizontal/tabs:after:inset-x-2 group-data-horizontal/tabs:after:bottom-0 group-data-horizontal/tabs:after:rounded-[2px] hover:text-foreground data-active:text-foreground',
               itemClassName,
             )}
           >
